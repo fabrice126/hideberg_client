@@ -1,0 +1,47 @@
+.div-app-HBinfosblog{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    
+}
+.div-app-HBinfosblog span.aside_title{
+    color: #363f93;
+
+    font-size: 20px;
+    padding: 10px;
+
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.div-app-HBinfosblog nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    list-style: none;
+}
+.div-app-HBinfosblog nav a{
+    padding: 10px;
+    flex:1;
+
+    text-decoration: none;
+    text-align: center;
+}
+.div-app-HBinfosblog nav a img{
+    /* width: 50px; */
+    height: 50px;
+}
+.div-app-HBinfosblog nav a span{
+    color: #3c4493;
+
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+
+    text-transform: capitalize;
+    text-align: center;
+    flex:1;
+}

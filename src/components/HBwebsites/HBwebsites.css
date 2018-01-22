@@ -1,0 +1,84 @@
+.div-app-HBwebsites{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.div-app-HBwebsites article{
+  
+}
+.div-app-HBwebsites .ul_content{
+  display:none;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  align-items:center;
+  align-content:center;
+  list-style:none;
+
+  position:relative;
+  top:-50px;
+  left:0px;
+  opacity:0;
+
+  animation:appear forwards 0.7s;
+  flex:1;
+}
+.div-app-HBwebsites .ul_content li:hover{
+  border:1px solid #363f93;
+}
+.div-app-HBwebsites .ul_content li{
+  background:#fff;
+  border:1px solid #eee;
+
+  padding:20px;
+  margin:0.5%;
+  width:19%;
+
+  text-align:center;
+}
+.current{
+  display:flex !important;
+}
+.annonce li{
+  width: 100%;
+}
+
+@keyframes appear{
+  0%{
+    top:-50px;
+    opacity:0;
+  }
+  30%{
+    top:0px;
+    left:0px;
+  }
+  100%{
+    top:0px;
+    opacity:1;
+  }
+}
+
+#pagination{
+  background:#fff;
+
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+}
+#pagination button:hover{
+  background:blue;
+  color:#fff;
+}
+#pagination button{
+  background:#fff;
+  color:dodgerblue;
+  border:1px solid dodgerblue;
+
+  padding:10px;
+
+  text-decoration:none;
+  cursor: pointer;
+}
