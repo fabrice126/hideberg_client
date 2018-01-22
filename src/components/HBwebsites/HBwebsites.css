@@ -1,0 +1,100 @@
+.div-app-HBwebsites{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.div-app-HBwebsites article{
+  
+}
+.div-app-HBwebsites .ul_content{
+  display:none;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  align-items:center;
+  align-content:center;
+  list-style:none;
+
+  position:relative;
+  top:-50px;
+  left:0px;
+  opacity:0;
+
+  animation:appear forwards 0.7s;
+  flex:1;
+}
+.div-app-HBwebsites .ul_content li:hover{
+  border:1px solid #363f93;
+}
+.div-app-HBwebsites .ul_content li{
+  background:#fff;
+  border:1px solid #eee;
+
+  padding:20px;
+  margin:0.5%;
+  width:19%;
+
+  text-align:center;
+}
+.current{
+  display:flex !important;
+}
+.annonce li{
+  width: 100% !important;
+}
+div.annonce{
+  border-top:2px solid #363f93;
+  border-bottom:2px solid #363f93;
+}
+
+@keyframes appear{
+  0%{
+    top:-50px;
+    opacity:0;
+  }
+  30%{
+    top:0px;
+    left:0px;
+  }
+  100%{
+    top:0px;
+    opacity:1;
+  }
+}
+
+#pagination{
+  background:#fff;
+
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+}
+
+.div-app-HBwebsites.annonce #pagination button.active,
+.div-app-HBwebsites:not(.annonce) #pagination button:hover{
+  background:#363f93;
+  color:#fff;
+}
+.div-app-HBwebsites:not(.annonce) #pagination button{
+  background:#fff;
+  color:#363f93;
+
+  padding:10px;
+  font-size: 14px;
+
+  text-decoration:none;
+  cursor: pointer;
+}
+.div-app-HBwebsites.annonce #pagination button{
+  border: 1px solid #ccc;
+  
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+  border-radius: 100%;
+
+  cursor: pointer;
+}

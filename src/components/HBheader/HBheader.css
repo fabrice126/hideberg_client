@@ -1,0 +1,17 @@
+header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
+}
+header img{
+  cursor: pointer;
+}
+header img#img_logo{
+  width: 170px;
+}
+header img#img_login{
+  width: 50px;
+}

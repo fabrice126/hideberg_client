@@ -1,0 +1,41 @@
+.div-app-HBtabs {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.div-app-HBtabs nav,.div-app-HBtabs section{
+    flex:1;
+}
+.div-app-HBtabs nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.div-app-HBtabs nav button.bt_tablinks{
+    color: #bababa;
+
+    font-size: 20px;
+    padding: 30px 0px;
+    flex:1;
+
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.div-app-HBtabs nav button.bt_tablinks:hover,
+.div-app-HBtabs nav button.active{
+    color: #363f93;
+}
+.div-app-HBtabs section article.article_content{
+    background: #fff;
+
+    display: none;
+}
+.div-app-HBtabs section .current{
+    display: flex;
+    flex:1;
+}
