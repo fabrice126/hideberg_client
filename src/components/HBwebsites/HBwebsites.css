@@ -41,7 +41,11 @@
   display:flex !important;
 }
 .annonce li{
-  width: 100%;
+  width: 100% !important;
+}
+div.annonce{
+  border-top:2px solid #363f93;
+  border-bottom:2px solid #363f93;
 }
 
 @keyframes appear{
@@ -68,17 +72,29 @@
   justify-content:center;
   align-items:center;
 }
-#pagination button:hover{
-  background:blue;
+
+.div-app-HBwebsites.annonce #pagination button.active,
+.div-app-HBwebsites:not(.annonce) #pagination button:hover{
+  background:#363f93;
   color:#fff;
 }
-#pagination button{
+.div-app-HBwebsites:not(.annonce) #pagination button{
   background:#fff;
-  color:dodgerblue;
-  border:1px solid dodgerblue;
+  color:#363f93;
 
   padding:10px;
+  font-size: 14px;
 
   text-decoration:none;
+  cursor: pointer;
+}
+.div-app-HBwebsites.annonce #pagination button{
+  border: 1px solid #ccc;
+  
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+  border-radius: 100%;
+
   cursor: pointer;
 }

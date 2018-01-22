@@ -35,6 +35,13 @@ class HBwebsites extends Component {
                 if (ul.classList.contains('current')) ul.classList.remove('current');
             }
         });
+        this.refs.myApp.querySelectorAll('button.bt_tablinks').forEach(el => {
+            if (el.id === 'bt_' + _pageNum) {
+                if (!el.classList.contains('active')) el.classList.add('active');
+            } else {
+                if (el.classList.contains('active')) el.classList.remove('active');
+            }
+        });
     }
 
     getLi(nbContentVisible, pageNum, nbContentVisibleMax) {
@@ -54,21 +61,28 @@ class HBwebsites extends Component {
 
         let classCurrent = "current";
         let classAnnonce = "";
-        if (this.props.duration) classAnnonce="annonce";
+        let classActive = "active";
+        if (this.props.duration) {
+            classAnnonce="annonce";
+        }
+        let btContent="";
 
         for (let pageNum = 0; pageNum < this.state.pageNumTotal; pageNum++) {
-            if (pageNum !== 0) classCurrent = " ";
+            if (pageNum !== 0) {
+                classCurrent = " ";
+                classActive = " ";
+            }
             nbContentVisibleMax = (((pageNum + 1) * this.state.nbContentTotalPerPage) < this.state.nbContentTotal) ? ((pageNum + 1) * this.state.nbContentTotalPerPage) : (this.state.nbContentTotal);
 
             _listContent.push(<ul id={'page_' + pageNum} key={pageNum} className={'ul_content ' + classCurrent+' '+classAnnonce}>{
                 this.getLi(nbContentVisible, pageNum, nbContentVisibleMax)
             }</ul>)
-
-            _listPagination.push(<button key={'bt_' + pageNum} onClick={(evt) => this.viewPage(pageNum)}>{pageNum+1}</button>)
+            if (!this.props.duration) btContent=pageNum+1;
+            _listPagination.push(<button id={'bt_' + pageNum} key={'bt_' + pageNum} onClick={(evt) => this.viewPage(pageNum)} className={"bt_tablinks "+classActive}>{btContent}</button>)
         }
         return (
-            <div className="div-app-HBwebsites">
-                <article id='home' ref="myApp">{_listContent}</article>
+            <div className={"div-app-HBwebsites "+classAnnonce} ref="myApp">
+                <article id='home'>{_listContent}</article>
                 <nav id='pagination'>{_listPagination}</nav>
             </div>
         )
