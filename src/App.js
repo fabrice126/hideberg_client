@@ -6,6 +6,7 @@ import HBmapcountry from './components/HBmapcountry/HBmapcountry';
 import HBtabs from './components/HBtabs/HBtabs';
 import HBheader from './components/HBheader/HBheader';
 import HBfooter from './components/HBfooter/HBfooter';
+import HBmap from './components/HBmap/HBmap';
 
 class App extends Component {
   render() {
@@ -33,7 +34,9 @@ class App extends Component {
         <HBheader />
         
         <section>
-          <aside className="app-aside">
+          <HBmap imgpath="./images/map/" continent="" />
+          {/* <HBmap imgpath="./images/map/" continent="europe" /> */}
+          {/* <aside className="app-aside">
             <HBmapcountry key={"blockcountry"} elements={elementsCountry} />
             <HBwebsites key={"pg_1"} elements={elementsAnnonce} nbElementsPerPage='1' duration="4" />
           </aside>
@@ -44,7 +47,7 @@ class App extends Component {
 
           <aside className="app-aside">
             <HBinfosblog key={"blocklinks"} name="blog info" elements={elementsLinksBlogs} />
-          </aside>
+          </aside> */}
         </section>
 
         <HBfooter />
