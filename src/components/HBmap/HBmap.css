@@ -1,0 +1,49 @@
+.div-app-HBmap{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; */
+    position: relative;
+    flex:1;
+    margin:0 auto;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-app-HBmap div.div_map{
+    position: relative;
+}
+.classContinent{
+    width: 40% !important;
+}
+.div-app-HBmap div.div_map img{
+    vertical-align: top;
+
+    width: 100%;
+}
+.div_filter{
+    background: rgba(89, 77, 156, 0);
+
+    position: absolute;
+    cursor: pointer;
+}
+
+.div-app-HBmap span{
+    color: #363f93;
+
+    padding: 5px;
+}
+
+.div-app-HBmap span.sp_success{
+    font-size: 22px;
+    margin-bottom: 30px;
+
+    font-weight: bold;
+}
+.div-app-HBmap span.sp_select{
+    font-size: 16px;
+}
