@@ -22,7 +22,7 @@ export default class Home extends Component {
         };
         let elementsSectorTabs = ["design",  "engineer", "finance", "marketing", "programs", "architectures"];
         let elementsSectorContents = [
-            <HBwebsites key={"pg_design"} duration="5" elements={elementsLinksWeb} nbElementsPerPage='25' />,
+            <HBwebsites key={"pg_design"} elements={elementsLinksWeb} nbElementsPerPage='25' />,
             <HBwebsites key={"pg_engineer"} elements={elementsLinksWeb} nbElementsPerPage='25' />,
             <HBwebsites key={"pg_finance"} elements={elementsLinksWeb} nbElementsPerPage='25' />,
             <HBwebsites key={"pg_marketing"} elements={elementsLinksWeb} nbElementsPerPage='25' />,

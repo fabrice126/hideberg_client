@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './HBheader.css';
 
 class HBheader extends Component {
@@ -6,7 +7,7 @@ class HBheader extends Component {
         super(props);
 
         this.state = {
-            
+
         }
     }
 
@@ -15,8 +16,12 @@ class HBheader extends Component {
         return (
             <div className="div-home-HBheader">
                 <header>
-                    <a href="/"><img id="img_logo" src="/images/_logo.png" alt="logo" /></a>
-                    <a href="/?login=true"><img id="img_login" src="/images/icons/login.png" alt="login"/></a>
+                    <Link to='/home'>
+                        <img id="img_logo" src="/images/_logo.png" alt="logo" />
+                    </Link>
+                    <Link to='/login'>
+                        <img id="img_login" src="/images/icons/login.png" alt="login" />
+                    </Link>
                 </header>
             </div>
         )
