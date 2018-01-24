@@ -12,7 +12,7 @@ class HBtabs extends Component {
     }
 
     viewPage(_pageNum) {
-        //console.log(this.refs.myApp);
+        //console.log(this.refs.myhome);
         this.refs.myTabs.querySelectorAll('article.article_content').forEach(el => {
             if (el.id === 'article_' + _pageNum) {
                 if (!el.classList.contains('current')) el.classList.add('current');
@@ -44,7 +44,7 @@ class HBtabs extends Component {
             article.push(<article id={"article_" + tabNum} key={"article_" + tabNum} className={"article_content " + classCurrent}>{this.state.contents[tabNum]}</article>);
         }
         return (
-            <div className="div-app-HBtabs" ref="myTabs">
+            <div className="div-home-HBtabs" ref="myTabs">
                 <nav>{tabs}</nav>
                 <section>{article}</section>
             </div>

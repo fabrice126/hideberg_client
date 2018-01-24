@@ -13,10 +13,10 @@ class HBheader extends Component {
     render() {
         //console.log(this.state.elements);
         return (
-            <div className="div-app-HBheader">
+            <div className="div-home-HBheader">
                 <header>
-                    <a href="/"><img id="img_logo" src="/images/_logo.png" /></a>
-                    <a href="/?login=true"><img id="img_login" src="/images/icons/login.png" /></a>
+                    <a href="/"><img id="img_logo" src="/images/_logo.png" alt="logo" /></a>
+                    <a href="/?login=true"><img id="img_login" src="/images/icons/login.png" alt="login"/></a>
                 </header>
             </div>
         )
