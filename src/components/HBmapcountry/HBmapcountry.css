@@ -1,11 +1,11 @@
-.div-app-HBmapcountry{
+.div-home-HBmapcountry{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
   }
 
-.div-app-HBmapcountry .aside_title {
+.div-home-HBmapcountry .aside_title {
     color: #363f93;
 
     font-size: 20px;

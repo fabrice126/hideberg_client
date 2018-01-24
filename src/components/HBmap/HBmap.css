@@ -1,4 +1,4 @@
-.div-app-HBmap{
+.div-home-HBmap{
     /* display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -14,13 +14,13 @@
     align-items: center;
 }
 
-.div-app-HBmap div.div_map{
+.div-home-HBmap div.div_map{
     position: relative;
 }
 .classContinent{
     width: 40% !important;
 }
-.div-app-HBmap div.div_map img{
+.div-home-HBmap div.div_map img{
     vertical-align: top;
 
     width: 100%;
@@ -32,18 +32,18 @@
     cursor: pointer;
 }
 
-.div-app-HBmap span{
+.div-home-HBmap span{
     color: #363f93;
 
     padding: 5px;
 }
 
-.div-app-HBmap span.sp_success{
+.div-home-HBmap span.sp_success{
     font-size: 22px;
     margin-bottom: 30px;
 
     font-weight: bold;
 }
-.div-app-HBmap span.sp_select{
+.div-home-HBmap span.sp_select{
     font-size: 16px;
 }

@@ -12,30 +12,32 @@ class HBwebsites extends Component {
             pageNumTotal: Math.ceil(this.props.elements.length / this.props.nbElementsPerPage),
             duration: (this.props.duration || 0)
         }
-
-        if (this.props.duration) this.doAnimation();
         //console.log(this.refs);
     }
-
+    componentDidMount() {
+        if (this.props.duration) this.doAnimation();
+    }
     doAnimation() {
         let _numPage = 0;
-        let refreshAnnonce = setInterval(() => {
+        this.refreshAnnonce = setInterval(() => {
             this.viewPage(_numPage);
             if (_numPage >= this.state.pageNumTotal - 1) _numPage = 0;
             else _numPage++;
-        }, (parseInt(this.props.duration) * 1000));
+        }, Number(this.props.duration) * 1000);
     }
-
+    componentWillUnmount(){
+        if (this.props.duration) clearInterval(this.refreshAnnonce);
+    }
     viewPage(_pageNum) {
-        //console.log(this.refs.myApp);
-        this.refs.myApp.querySelectorAll('ul.ul_content').forEach(ul => {
+        console.log(this.refs.myhome);
+        this.refs.myhome.querySelectorAll('ul.ul_content').forEach(ul => {
             if (ul.id === 'page_' + _pageNum) {
                 if (!ul.classList.contains('current')) ul.classList.add('current');
             } else {
                 if (ul.classList.contains('current')) ul.classList.remove('current');
             }
         });
-        this.refs.myApp.querySelectorAll('button.bt_tablinks').forEach(el => {
+        this.refs.myhome.querySelectorAll('button.bt_tablinks').forEach(el => {
             if (el.id === 'bt_' + _pageNum) {
                 if (!el.classList.contains('active')) el.classList.add('active');
             } else {
@@ -63,9 +65,9 @@ class HBwebsites extends Component {
         let classAnnonce = "";
         let classActive = "active";
         if (this.props.duration) {
-            classAnnonce="annonce";
+            classAnnonce = "annonce";
         }
-        let btContent="";
+        let btContent = "";
 
         for (let pageNum = 0; pageNum < this.state.pageNumTotal; pageNum++) {
             if (pageNum !== 0) {
@@ -74,14 +76,14 @@ class HBwebsites extends Component {
             }
             nbContentVisibleMax = (((pageNum + 1) * this.state.nbContentTotalPerPage) < this.state.nbContentTotal) ? ((pageNum + 1) * this.state.nbContentTotalPerPage) : (this.state.nbContentTotal);
 
-            _listContent.push(<ul id={'page_' + pageNum} key={pageNum} className={'ul_content ' + classCurrent+' '+classAnnonce}>{
+            _listContent.push(<ul id={'page_' + pageNum} key={pageNum} className={'ul_content ' + classCurrent + ' ' + classAnnonce}>{
                 this.getLi(nbContentVisible, pageNum, nbContentVisibleMax)
             }</ul>)
-            if (!this.props.duration) btContent=pageNum+1;
-            _listPagination.push(<button id={'bt_' + pageNum} key={'bt_' + pageNum} onClick={(evt) => this.viewPage(pageNum)} className={"bt_tablinks "+classActive}>{btContent}</button>)
+            if (!this.props.duration) btContent = pageNum + 1;
+            _listPagination.push(<button id={'bt_' + pageNum} key={'bt_' + pageNum} onClick={(evt) => this.viewPage(pageNum)} className={"bt_tablinks " + classActive}>{btContent}</button>)
         }
         return (
-            <div className={"div-app-HBwebsites "+classAnnonce} ref="myApp">
+            <div className={"div-home-HBwebsites " + classAnnonce} ref="myhome">
                 <article id='home'>{_listContent}</article>
                 <nav id='pagination'>{_listPagination}</nav>
             </div>

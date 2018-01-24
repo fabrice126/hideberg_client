@@ -1,19 +1,19 @@
-.div-app-HBtabs {
+.div-home-HBtabs {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
 }
-.div-app-HBtabs nav,.div-app-HBtabs section{
+.div-home-HBtabs nav,.div-home-HBtabs section{
     flex:1;
 }
-.div-app-HBtabs nav{
+.div-home-HBtabs nav{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
 }
-.div-app-HBtabs nav button.bt_tablinks{
+.div-home-HBtabs nav button.bt_tablinks{
     color: #bababa;
 
     font-size: 20px;
@@ -26,16 +26,16 @@
     text-transform: capitalize;
     cursor: pointer;
 }
-.div-app-HBtabs nav button.bt_tablinks:hover,
-.div-app-HBtabs nav button.active{
+.div-home-HBtabs nav button.bt_tablinks:hover,
+.div-home-HBtabs nav button.active{
     color: #363f93;
 }
-.div-app-HBtabs section article.article_content{
+.div-home-HBtabs section article.article_content{
     background: #fff;
 
     display: none;
 }
-.div-app-HBtabs section .current{
+.div-home-HBtabs section .current{
     display: flex;
     flex:1;
 }

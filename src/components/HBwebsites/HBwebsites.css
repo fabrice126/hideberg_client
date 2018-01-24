@@ -1,13 +1,13 @@
-.div-app-HBwebsites{
+.div-home-HBwebsites{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-.div-app-HBwebsites article{
+.div-home-HBwebsites article{
   
 }
-.div-app-HBwebsites .ul_content{
+.div-home-HBwebsites .ul_content{
   display:none;
   flex-direction:row;
   flex-wrap:wrap;
@@ -24,10 +24,10 @@
   animation:appear forwards 0.7s;
   flex:1;
 }
-.div-app-HBwebsites .ul_content li:hover{
+.div-home-HBwebsites .ul_content li:hover{
   border:1px solid #363f93;
 }
-.div-app-HBwebsites .ul_content li{
+.div-home-HBwebsites .ul_content li{
   background:#fff;
   border:1px solid #eee;
 
@@ -73,12 +73,12 @@ div.annonce{
   align-items:center;
 }
 
-.div-app-HBwebsites.annonce #pagination button.active,
-.div-app-HBwebsites:not(.annonce) #pagination button:hover{
+.div-home-HBwebsites.annonce #pagination button.active,
+.div-home-HBwebsites:not(.annonce) #pagination button:hover{
   background:#363f93;
   color:#fff;
 }
-.div-app-HBwebsites:not(.annonce) #pagination button{
+.div-home-HBwebsites:not(.annonce) #pagination button{
   background:#fff;
   color:#363f93;
 
@@ -88,7 +88,7 @@ div.annonce{
   text-decoration:none;
   cursor: pointer;
 }
-.div-app-HBwebsites.annonce #pagination button{
+.div-home-HBwebsites.annonce #pagination button{
   border: 1px solid #ccc;
   
   width: 12px;
