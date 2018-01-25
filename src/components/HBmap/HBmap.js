@@ -44,10 +44,12 @@ class HBmap extends Component {
 
     render() {
         let { data: _data, minRatio, continent } = this.state;
+        if(continent && continent !== "europe") return <div> Ce continent arrive bientôt </div>
         let ratio = this.state.imgwidth;
         let divFilters = [];
         let liStyle = {};
         for (let c in _data) {
+            console.log(c);
             liStyle = {
                 bottom: (_data[c].bottom * ratio) * minRatio + "%",
                 left: (_data[c].left * ratio) + "%",
