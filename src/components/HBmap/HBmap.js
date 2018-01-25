@@ -1,46 +1,36 @@
 import React, { Component } from 'react';
 import './HBmap.css';
 import confMAP from './HBmap_conf.js';
+import { Link } from 'react-router-dom';
 
 class HBmap extends Component {
     constructor(props) {
         super(props);
-
-        this.imgpath = "./images/map/";
-        this.loadMap(true, this.props.continent)
+        const { continent } = this.props;
+        this.imgpath = "/images/map/";
+        this.state = this.loadMapConfig(continent);
     }
-
-    loadMap(_init, _continent) {
-        console.log(this.imgMap);
-        let confState = {};
-        if (_continent) {
-            confState = {
-                imgsrc: this.imgpath + "continents/" + _continent + "/" + _continent + "_empty.png",
-                data: confMAP[_continent].countries,
-                continent: _continent,
-                imgwidth: (100 / 854),
-                minRatio: (1.27),
-                classContinent: "classContinent",
-                sp_select: "2. Select the country"
-            }
-        } else {
-            confState = {
-                imgsrc: this.imgpath + "world_empty.png",
-                data: confMAP,
-                continent: "",
-                imgwidth: (100 / 1280),
-                minRatio: (2.19),
-                classContinent: "",
-                sp_select: "1. Select the continent where you would like work"
-            }
+    componentWillReceiveProps(nextProps, nextState) {
+        const { continent } = nextProps;
+        if (continent !== this.props.continent) {
+            const configMap = this.loadMapConfig(continent);
+            this.setState(configMap);
         }
-        if (_init) this.setState(confState);
-        else this.setState(confState);
     }
 
-
+    loadMapConfig = (continent) => {
+        return {
+            continent: continent,
+            imgsrc: (continent) ? this.imgpath + "continents/" + continent + "/" + continent + "_empty.png" : this.imgpath + "world_empty.png",
+            data: (continent) ? confMAP[continent].countries : confMAP,
+            imgwidth: (continent) ? (100 / 854) : (100 / 1280),
+            minRatio: (continent) ? (1.27) : (2.19),
+            classContinent: (continent) ? "classContinent" : "",
+            sp_select: (continent) ? "2. Select the country" : "1. Select the continent where you would like work"
+        }
+    }
     changeImgPath(c) {
-        const continent = this.state
+        const { continent } = this.state;
         if (continent) {
             this.setState({
                 imgsrc: this.imgpath + "continents/" + continent + "/" + continent + "_" + c + ".png"
@@ -52,20 +42,11 @@ class HBmap extends Component {
         }
     }
 
-    goToSW(c) {
-        console.log(c);
-        if (c === "france") {
-            console.log('go go: ' + c);
-        } else {
-            alert('coming soon for ' + c + ' !');
-        }
-    }
-
     render() {
-        let { imgwidth: ratio, data: _data, minRatio, continent } = this.state;
+        let { data: _data, minRatio, continent } = this.state;
+        let ratio = this.state.imgwidth;
         let divFilters = [];
         let liStyle = {};
-        let clickMapFunc = "";
         for (let c in _data) {
             liStyle = {
                 bottom: (_data[c].bottom * ratio) * minRatio + "%",
@@ -73,15 +54,13 @@ class HBmap extends Component {
                 width: (_data[c].width * ratio) + "%",
                 height: (_data[c].height * ratio) * minRatio + "%"
             }
-            if (continent) clickMapFunc = (evt) => this.goToSW(c);
-            else clickMapFunc = (evt) => this.loadMap(false, c);
-
             divFilters.push(
-                <div key={"div_" + c} id={"div_" + c} className="div_filter" style={liStyle} 
-                    onMouseEnter={(evt) => this.changeImgPath(c)} 
-                    onMouseLeave={(evt) => this.changeImgPath("empty")} 
-                    onClick={clickMapFunc}>
-                </div>
+                <Link key={"div_" + c} to={continent ? { pathname: `/home/${c}` } : { pathname: `/world/${c}` }}>
+                    <div key={"div_" + c} id={"div_" + c} className="div_filter" style={liStyle}
+                        onMouseEnter={(evt) => this.changeImgPath(c)}
+                        onMouseLeave={(evt) => this.changeImgPath("empty")}>
+                    </div>
+                </Link>
             );
         }
 
@@ -91,7 +70,7 @@ class HBmap extends Component {
                 <span className="sp_select">{this.state.sp_select}</span>
                 <div className={"div_map " + this.state.classContinent}>
                     {divFilters}
-                    <img id="img_map" ref={(div) => { this.imgMap = div; }} src={this.state.imgsrc} alt="map" />
+                    <img id="img_map" src={this.state.imgsrc} alt="map" />
                 </div>
             </div>
         )

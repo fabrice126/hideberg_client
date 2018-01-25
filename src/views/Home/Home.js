@@ -6,7 +6,6 @@ import HBmapcountry from '../../components/HBmapcountry/HBmapcountry';
 import HBtabs from '../../components/HBtabs/HBtabs';
 import HBheader from '../../components/HBheader/HBheader';
 import HBfooter from '../../components/HBfooter/HBfooter';
-// import HBmap from '../../components/HBmap/HBmap';
 
 export default class Home extends Component {
     render() {
@@ -20,7 +19,7 @@ export default class Home extends Component {
         let elementsCountry = {
             country: "france"
         };
-        let elementsSectorTabs = ["design",  "engineer", "finance", "marketing", "programs", "architectures"];
+        let elementsSectorTabs = ["design", "engineer", "finance", "marketing", "programs", "architectures"];
         let elementsSectorContents = [
             <HBwebsites key={"pg_design"} elements={elementsLinksWeb} nbElementsPerPage='25' />,
             <HBwebsites key={"pg_engineer"} elements={elementsLinksWeb} nbElementsPerPage='25' />,
@@ -32,9 +31,7 @@ export default class Home extends Component {
         return (
             <div className="Home">
                 <HBheader />
-
                 <section>
-                    {/* <HBmap imgpath="./images/map/" continent="europe" /> */}
                     <aside className="home-aside">
                         <HBmapcountry key={"blockcountry"} elements={elementsCountry} />
                         <HBwebsites key={"pg_1"} elements={elementsAnnonce} nbElementsPerPage='1' duration="4" />
@@ -48,7 +45,6 @@ export default class Home extends Component {
                         <HBinfosblog key={"blocklinks"} name="blog info" elements={elementsLinksBlogs} />
                     </aside>
                 </section>
-
                 <HBfooter />
             </div>
         );
