@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 class HBwebsites extends Component {
     constructor(props) {
         super(props);
-
+        console.log("Constructor HBwebsites");
+        console.log("---" + this.props.sector);
         this.state = {
             elements: this.props.elements,
             nbContentTotal: this.props.elements.length,
@@ -13,23 +14,21 @@ class HBwebsites extends Component {
             pageNumTotal: Math.ceil(this.props.elements.length / this.props.nbElementsPerPage),
             duration: (this.props.duration || 0),
             sector: this.props.sector,
-            elementsJSON: {}
+            elementsJSON: null
         }
-        //console.log(this.refs);
     }
     componentDidMount() {
         if (this.props.duration) this.doAnimation();
-
-        fetch('http://localhost:3000/api/continent/europe/country/france/sector/' + this.state.sector + '/websites')
-            .then(response => {
-                response.json().then(data => {
-                    this.setState({
-                        elementsJSON: data,
-                        nbContentTotal: data.length,
-                        pageNumTotal: Math.ceil(data.length / this.props.nbElementsPerPage)
-                    });
+        fetch(`http://localhost:5001/api/continent/europe/country/france/sector/${this.props.sector}/websites`)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    elementsJSON: data,
+                    nbContentTotal: data.length,
+                    pageNumTotal: Math.ceil(data.length / this.props.nbElementsPerPage)
                 });
-            })
+            });
+
     }
 
     componentWillUnmount() {
@@ -46,7 +45,7 @@ class HBwebsites extends Component {
     }
 
     viewPage(_pageNum) {
-        console.log(this.refs.myhome);
+        // console.log(this.refs.myhome);
         this.refs.myhome.querySelectorAll('ul.ul_content').forEach(ul => {
             if (ul.id === 'page_' + _pageNum) {
                 if (!ul.classList.contains('current')) ul.classList.add('current');
@@ -65,26 +64,18 @@ class HBwebsites extends Component {
 
     getLi(pageNum, nbContentVisibleMax) {
         let tabLi = [];
-        // for (let nbContentVisible = (pageNum * this.state.nbContentTotalPerPage); nbContentVisible < nbContentVisibleMax; nbContentVisible++) {
-        //     tabLi.push(<li key={"li_" + nbContentVisible}>{this.state.elements[nbContentVisible] + " " + (nbContentVisible + 1)}</li>);
-        // }
-
         let data = this.state.elementsJSON;
-        console.log(data);
-        Object.keys(data).map(
-            (el, index) => {
-                console.log(index, el, data[el], data[el].website_label);
-                if (index >= (pageNum * this.state.nbContentTotalPerPage) && index < nbContentVisibleMax) {
-
-                    tabLi.push(<li key={"li_" + index}>
-                        <Link to={data[el].link_label} target="_blank" key={"a_" + index}>
-                            <img src={"/images/website/" + data[el].website_label + ".png"} />
+        for (let i in data) {
+            if (i >= (pageNum * this.state.nbContentTotalPerPage) && i < nbContentVisibleMax) {
+                tabLi.push(
+                    <li key={"li_" + i}>
+                        <Link to={data[i].link_url} target="_blank" key={"a_" + i}>
+                            <img src={`/images/website/${data[i].website_label}.png`} alt={data[i].website_label} />
                         </Link>
-                    </li>);
-                }
-
+                    </li>
+                );
             }
-        )
+        }
         return tabLi;
     }
 
@@ -113,7 +104,7 @@ class HBwebsites extends Component {
                 this.getLi(pageNum, nbContentVisibleMax)
             }</ul>)
             if (!this.props.duration) btContent = pageNum + 1;
-            if (this.state.pageNumTotal>1) _listPagination.push(<button id={'bt_' + pageNum} key={'bt_' + pageNum} onClick={(evt) => this.viewPage(pageNum)} className={"bt_tablinks " + classActive}>{btContent}</button>)
+            if (this.state.pageNumTotal > 1) _listPagination.push(<button id={'bt_' + pageNum} key={'bt_' + pageNum} onClick={(evt) => this.viewPage(pageNum)} className={"bt_tablinks " + classActive}>{btContent}</button>)
         }
         return (
             <div className={"div-home-HBwebsites " + classAnnonce} ref="myhome">
