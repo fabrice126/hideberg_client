@@ -1,0 +1,30 @@
+.div-home-HBerror{
+  background: #363f93;
+
+  padding: 10%;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; 
+}
+
+.div-home-HBerror span{
+  font-weight: bold;
+  text-align: center;
+
+  padding: 20px;
+}
+
+.span_main{
+  color: #fff;
+
+  font-size: 40px;
+  text-transform: uppercase;
+}
+.span_redirect{
+  color: #ccc;
+
+  font-size: 24px;
+}

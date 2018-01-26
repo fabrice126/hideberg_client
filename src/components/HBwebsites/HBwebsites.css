@@ -16,6 +16,8 @@
   align-content:center;
   list-style:none;
 
+  padding: 0px 10%;
+  
   position:relative;
   top:-50px;
   left:0px;
@@ -29,13 +31,18 @@
 }
 .div-home-HBwebsites .ul_content li{
   background:#fff;
-  border:1px solid #eee;
 
-  padding:20px;
   margin:0.5%;
   width:19%;
 
   text-align:center;
+}
+.div-home-HBwebsites .ul_content li img{
+  width: 100%;
+
+  box-shadow: 0px 2px 5px #ddd;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 .current{
   display:flex !important;

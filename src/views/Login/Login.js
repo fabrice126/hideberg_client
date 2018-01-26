@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './Login.css';
-import HBheader from '../../components/HBheader/HBheader';
-import HBfooter from '../../components/HBfooter/HBfooter';
 
 export default class Login extends Component {
     constructor(props) {
@@ -30,23 +28,22 @@ export default class Login extends Component {
         //console.log(this.state.elements);
         return (
             <div className="div-home-HBlogin">
-            <HBheader />
 
                 <section>
 
-                    <form id="form_1" class="formLogin current">
+                    <form id="form_1" className="formLogin current">
                         <div><span>Nom</span><input type="text" placeholder="" /></div>
                         <div><span>Prénom</span><input type="text" placeholder="" /></div>
                         <div><span>Email</span><input type="email" placeholder="" /></div>
                     </form>
 
-                    <form id="form_2" class="formLogin">
+                    <form id="form_2" className="formLogin">
                         <div><span>Date de naissance</span><input type="date" /></div>
                         <div>
                             <span>Genre</span>
-                            <div class="div_genre">
-                                <label for="genre_male"><input id="genre_male" name="genre" type="radio" checked /> Homme</label>
-                                <label for="genre_female"><input id="genre_female" name="genre" type="radio" /> Femme</label>
+                            <div className="div_genre">
+                                <label htmlFor="genre_male"><input id="genre_male" name="genre" type="radio" /> Homme</label>
+                                <label htmlFor="genre_female"><input id="genre_female" name="genre" type="radio" /> Femme</label>
                             </div>
                         </div>
                         <div>
@@ -67,7 +64,7 @@ export default class Login extends Component {
                         </div>
                     </form>
 
-                    <form id="form_3" class="formLogin">
+                    <form id="form_3" className="formLogin">
                         <div>
                             <span>Profession</span>
                             <select>
@@ -114,7 +111,6 @@ export default class Login extends Component {
                     <button id="bt_loginNext" data-form="1" onClick={(evt)=>{this.loginNext(evt)}}>Suivant (1/3)</button>
                 </section>
 
-                <HBfooter />
             </div>
         )
     }

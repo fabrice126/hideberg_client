@@ -5,6 +5,7 @@ import HBmap from '../../components/HBmap/HBmap';
 export default class Continent extends Component {
     render() {
         const { continent } = this.props.match.params;
+        console.log(continent);
         return (
             <div className="Continent">
                 <section>

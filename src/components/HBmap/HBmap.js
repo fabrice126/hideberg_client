@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './HBmap.css';
 import confMAP from './HBmap_conf.js';
 import { Link } from 'react-router-dom';
+import HBerror from '../HBerror/HBerror';
 
 class HBmap extends Component {
     constructor(props) {
@@ -44,20 +45,29 @@ class HBmap extends Component {
 
     render() {
         let { data: _data, minRatio, continent } = this.state;
-        if(continent && continent !== "europe") return <div> Ce continent arrive bientôt </div>
+        if(continent && continent !== "europe") {
+            return <HBerror errMsg="Ce continent arrivera bientôt" />
+        }
+        // if (this.state.country && this.state.country!=="france"){
+        //     return <HBerror errMsg="Ce pays arrive bientôt" />
+        // }
         let ratio = this.state.imgwidth;
         let divFilters = [];
         let liStyle = {};
+        let _to="";
         for (let c in _data) {
-            console.log(c);
             liStyle = {
                 bottom: (_data[c].bottom * ratio) * minRatio + "%",
                 left: (_data[c].left * ratio) + "%",
                 width: (_data[c].width * ratio) + "%",
                 height: (_data[c].height * ratio) * minRatio + "%"
             }
+            _to=continent ? { pathname: `/country/${c}/sector/design` } : { pathname: `/continent/${c}` };
+
+            if (continent && c!=="france") _to={ pathname: `/404`, errMsg:"Ce pays arrivera bientôt"};
+
             divFilters.push(
-                <Link key={"div_" + c} to={continent ? { pathname: `/home/${c}` } : { pathname: `/world/${c}` }}>
+                <Link key={"div_" + c} to={_to}>
                     <div key={"div_" + c} id={"div_" + c} className="div_filter" style={liStyle}
                         onMouseEnter={(evt) => this.changeImgPath(c)}
                         onMouseLeave={(evt) => this.changeImgPath("empty")}>

@@ -20,7 +20,7 @@ class HBinfosblog extends Component {
                 //console.log(key + " -> " + links[key]);
                 tabLinks.push(
                     <Link to='/#' target="_blank" key={"a_" + key}>
-                        <img src={"images/icons/" + links[key] + ".png"} alt={"a_" + key} />
+                        <img src={"/images/icons/" + links[key] + ".png"} alt={"a_" + key} />
                         <span>{links[key]}</span>
                     </Link>
                     // {<a href="#" target="_blank" key={"a_"+key}><img src={"images/icons/" + links[key] + ".png"} />{links[key]}</a>}
