@@ -1,5 +1,5 @@
 .div-home-HBerror{
-  background: #363f93;
+  /* background: #363f93; */
 
   padding: 10%;
 
@@ -18,13 +18,13 @@
 }
 
 .span_main{
-  color: #fff;
+  color: #363f93;
 
   font-size: 40px;
   text-transform: uppercase;
 }
 .span_redirect{
-  color: #ccc;
+  color: #bbb;
 
   font-size: 24px;
 }

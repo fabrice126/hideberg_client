@@ -3,43 +3,54 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: stretch; }
+  align-items: stretch;
+}
 
 .Home header {
-  flex: 1; }
+  flex: 1;
+}
 
 .Home section {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: stretch; }
+  align-items: stretch;
+}
 
 .Home aside.home-aside {
   /* background: #eee; */
   flex: 1;
-  padding: 20px;
-  margin-top: 80px; }
+  padding: 0px 20px;
+  display: flex;
+  align-content: stretch;
+  justify-content: flex-start;
+  flex-direction: column;
+}
 
 .Home article.home-article {
   flex: 4;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch; }
+  align-items: stretch;
+}
 
-* {
-  border: 0px;
-  border-radius: 0px;
-  border-collapse: collapse;
-  box-sizing: border-box;
-  vertical-align: top;
-  font-family: 'helvetica', sans-serif; }
+.Home span.sp_select{
+  color: #363f93;
 
-*:focus {
-  outline: 0; }
+  padding: 15px;
+  
+  font-size: 16px;
+  text-align: center;
+}
 
-html,
-body {
-  height: 100%;
-  min-height: 100%; }
+.Home .div-home-HBmapcountry{
+  margin-top: 70px;
+}
+.Home .div-home-HBinfosblog{
+  margin-top: 120px;
+}
+.div-home-HBannonces{
+  margin-top: 30px;
+}

@@ -8,25 +8,56 @@ class HBinfosblog extends Component {
         super(props);
 
         this.state = {
-            elements: this.props.elements
+            name: this.props.name,
+            elementsJSON:""
         }
     }
 
+
+    componentDidMount() {
+        let _url = `http://localhost:5001/api/continent/europe/country/france/infos`;
+        console.log(_url);
+        fetch(_url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                console.log(data.length);
+                this.setState({
+                    elementsJSON: data
+                });
+            });
+    }
+
     render() {
-        let links = this.state.elements;
+        let links = this.state.elementsJSON;
+        let link="";
         let tabLinks = [];
-        for (let key in links) {
-            if (links.hasOwnProperty(key)) {
-                //console.log(key + " -> " + links[key]);
-                tabLinks.push(
-                    <Link to='/#' target="_blank" key={"a_" + key}>
-                        <img src={"/images/icons/" + links[key] + ".png"} alt={"a_" + key} />
-                        <span>{links[key]}</span>
-                    </Link>
-                    // {<a href="#" target="_blank" key={"a_"+key}><img src={"images/icons/" + links[key] + ".png"} />{links[key]}</a>}
-                );
-            }
+        let linkEmpty={ pathname: `/404`, errMsg: "Ce lien arrivera bientôt" };
+
+        for (let i in links){
+            link=links[i];
+
+            tabLinks.push(
+                <Link to={link.country_link_cv || linkEmpty} target="_blank" key={"a_visa"}>
+                    <img src={"/images/icons/visa.png"} alt={"a_visa"} />
+                    <span>visa</span>
+                </Link>
+            );
+            tabLinks.push(
+                <Link to={link.country_link_diplomatic || linkEmpty} target="_blank" key={"a_cv"}>
+                    <img src={"/images/icons/cv.png"} alt={"a_cv"} />
+                    <span>cv</span>
+                </Link>
+            );
+            tabLinks.push(
+                <Link to={link.country_link_politic || linkEmpty} target="_blank" key={"a_news"}>
+                    <img src={"/images/icons/news.png"} alt={"a_news"} />
+                    <span>news</span>
+                </Link>
+            );
         }
+        
+                
         return (
             <div className="div-home-HBinfosblog">
                 <span className="aside_title">{this.props.name}</span>

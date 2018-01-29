@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import './HBmap.css';
 import confMAP from './HBmap_conf.js';
 import { Link } from 'react-router-dom';
-import HBerror from '../HBerror/HBerror';
 
 class HBmap extends Component {
     constructor(props) {
         super(props);
+
+        this.availableCountries=['france'];
+        this.availableContinents=['europe'];
+
         const { continent } = this.props;
         this.imgpath = "/images/map/";
         this.state = this.loadMapConfig(continent);
     }
+
     componentWillReceiveProps(nextProps, nextState) {
         const { continent } = nextProps;
         if (continent !== this.props.continent) {
@@ -20,16 +24,20 @@ class HBmap extends Component {
     }
 
     loadMapConfig = (continent) => {
+        console.log("continent", continent);
         return {
             continent: continent,
             imgsrc: (continent) ? this.imgpath + "continents/" + continent + "/" + continent + "_empty.png" : this.imgpath + "world_empty.png",
             data: (continent) ? confMAP[continent].countries : confMAP,
-            imgwidth: (continent) ? (100 / 854) : (100 / 1280),
-            minRatio: (continent) ? (1.27) : (2.19),
             classContinent: (continent) ? "classContinent" : "",
-            sp_select: (continent) ? "2. Select the country" : "1. Select the continent where you would like work"
+            sp_select: (continent) ? "2. Sélectionner le pays de votre choix." : "1. Sélectionner le continent où vous souhaitez travailler",
+            divFilters: this.loadMapFilters(continent),
+            selectCountry: [],
+            hidden: (continent) ? "hidden" : "",
+            hiddenSelectCountry: (continent) ? "" : "hidden"
         }
     }
+
     changeImgPath(c) {
         const { continent } = this.state;
         if (continent) {
@@ -43,29 +51,34 @@ class HBmap extends Component {
         }
     }
 
-    render() {
-        let { data: _data, minRatio, continent } = this.state;
-        if(continent && continent !== "europe") {
-            return <HBerror errMsg="Ce continent arrivera bientôt" />
-        }
-        // if (this.state.country && this.state.country!=="france"){
-        //     return <HBerror errMsg="Ce pays arrive bientôt" />
-        // }
-        let ratio = this.state.imgwidth;
-        let divFilters = [];
+    loadMapFilters(continent) {
+        let _data = (continent) ? confMAP[continent].countries : confMAP;
+        let _imgwidth = (continent) ? (100 / 854) : (100 / 1280);
+        let _minRatio = (continent) ? (1.27) : (2.19);
+        console.log("loadMapFilters");
+        console.log(this.state);
+
         let liStyle = {};
-        let _to="";
+        let _to = "";
+        let divFilters = [];
+        let selectCountry = [];
         for (let c in _data) {
             liStyle = {
-                bottom: (_data[c].bottom * ratio) * minRatio + "%",
-                left: (_data[c].left * ratio) + "%",
-                width: (_data[c].width * ratio) + "%",
-                height: (_data[c].height * ratio) * minRatio + "%"
+                bottom: (_data[c].bottom * (_imgwidth)) * _minRatio + "%",
+                left: (_data[c].left * (_imgwidth)) + "%",
+                width: (_data[c].width * (_imgwidth)) + "%",
+                height: (_data[c].height * (_imgwidth)) * _minRatio + "%"
             }
-            _to=continent ? { pathname: `/country/${c}/sector/design` } : { pathname: `/continent/${c}` };
+            _to = continent ? { pathname: `/country/${c}/sector/design` } : { pathname: `/continent/${c}` };
 
-            if (continent && c!=="france") _to={ pathname: `/404`, errMsg:"Ce pays arrivera bientôt"};
-
+            if (continent) {
+                if (this.availableCountries.indexOf(c)===-1) _to = { pathname: `/404`, errMsg: "Ce pays arrivera bientôt" };
+                selectCountry.push(<option key={"option_" + c}>{c}</option>);
+            }else{
+                //if (!_data[c].countries) _to = { pathname: `/404`, errMsg: "Ce continent arrivera bientôt" };
+                if (this.availableContinents.indexOf(c)===-1) _to = { pathname: `/404`, errMsg: "Ce continent arrivera bientôt" };
+            }
+            console.log(c);
             divFilters.push(
                 <Link key={"div_" + c} to={_to}>
                     <div key={"div_" + c} id={"div_" + c} className="div_filter" style={liStyle}
@@ -75,13 +88,25 @@ class HBmap extends Component {
                 </Link>
             );
         }
+        return { divFilters, selectCountry };
+    }
+
+    selectedCountry(evt) {
+        let c = (evt.target.value);
+        let _to = { pathname: `/country/${c}/sector/design`, errMsg: '' };
+        if (c !== "france") _to = { pathname: `/404`, errMsg: "Ce pays arrivera bientôt" };
+        console.log(_to);
+    }
+
+    render() {
 
         return (
             <div className="div-home-HBmap">
-                <span className="sp_success">Your sucess start here.</span>
+                <span className={"sp_success " + this.state.hidden}>Émerger votre emploi à l'international.</span>
                 <span className="sp_select">{this.state.sp_select}</span>
+                <select className={this.state.hiddenSelectCountry} onChange={(evt) => { this.selectedCountry(evt) }}>{this.state.divFilters.selectCountry}</select>
                 <div className={"div_map " + this.state.classContinent}>
-                    {divFilters}
+                    {this.state.divFilters.divFilters}
                     <img id="img_map" src={this.state.imgsrc} alt="map" />
                 </div>
             </div>
