@@ -1,0 +1,132 @@
+.div-home-HBannonces{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.div-home-HBannonces article{
+}
+.div-home-HBannonces article#home{
+  max-height: 300px;
+  min-height: 300px;
+}
+.div-home-HBannonces .ul_content{
+  display:none;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  align-content:center;
+  list-style:none;
+  
+  position:relative;
+  top:-50px;
+  left:0px;
+  opacity:0;
+
+  animation:appear forwards 0.7s;
+  flex:1;
+}
+.div-home-HBannonces .ul_content li{
+
+  text-align:center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center;
+}
+.div-home-HBannonces .ul_content li img.img_job:hover{
+  border:1px solid #363f93;
+}
+.div-home-HBannonces .ul_content li img.img_job{
+  /* box-shadow: 0px 2px 5px #ddd; */
+  /* border: 1px solid #ccc;
+  border-radius: 100%; */
+  /* width: 80px; */
+  height:80px;
+}
+.div-home-HBannonces .ul_content li img{
+  align-self: center;
+  margin: 15px 0px;
+}
+.div-home-HBannonces .ul_content li img.img_logo{
+  width: 80px;
+}
+.div-home-HBannonces .ul_content li span{
+  padding: 10px;
+}
+.span_jobtitle{
+  color: #999;
+
+  font-size: 14px;
+
+  font-weight: bold;
+}
+.span_jobsummary{
+  color: #bbb;
+
+  font-size: 12px;
+}
+.current{
+  display:flex !important;
+}
+.annonce li{
+  width: 100% !important;
+}
+div.annonce{
+  border-top:2px solid #363f93;
+  border-bottom:2px solid #363f93;
+}
+
+@keyframes appear{
+  0%{
+    top:-50px;
+    opacity:0;
+  }
+  30%{
+    top:0px;
+    left:0px;
+  }
+  100%{
+    top:0px;
+    opacity:1;
+  }
+}
+
+#pagination{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  align-items:flex-start;
+  align-self: center;
+  
+  margin-bottom: 5px;
+}
+
+.div-home-HBannonces.annonce #pagination button.active,
+.div-home-HBannonces:not(.annonce) #pagination button:hover{
+  background:#363f93;
+  color:#fff;
+}
+.div-home-HBannonces:not(.annonce) #pagination button{
+  color:#363f93;
+
+  padding:10px;
+  font-size: 14px;
+
+  text-decoration:none;
+  cursor: pointer;
+}
+.div-home-HBannonces.annonce #pagination button{
+  border: 1px solid #ccc;
+  
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+  border-radius: 100%;
+
+  cursor: pointer;
+}

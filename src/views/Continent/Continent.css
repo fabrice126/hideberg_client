@@ -1,0 +1,12 @@
+.Continent section{
+}
+
+.Continent .div-home-HBmap{
+    flex:5;
+}
+.Continent .div-home-HBannonces{
+    position: absolute;
+    top: 30%;
+    right: 50px;
+    width: 300px;
+}

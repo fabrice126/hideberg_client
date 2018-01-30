@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../index.css';
 import './Page404.css';
 import HBerror from '../../components/HBerror/HBerror';
 

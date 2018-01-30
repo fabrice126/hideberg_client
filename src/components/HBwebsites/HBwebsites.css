@@ -1,11 +1,16 @@
 .div-home-HBwebsites{
+  padding: 20px 40px;
+
+  flex:1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 .div-home-HBwebsites article{
-  
+}
+.div-home-HBwebsites article#home{
+  min-height: 580px;
 }
 .div-home-HBwebsites .ul_content{
   display:none;
@@ -15,8 +20,6 @@
   align-items:center;
   align-content:center;
   list-style:none;
-
-  padding: 0px 10%;
   
   position:relative;
   top:-50px;
@@ -26,22 +29,20 @@
   animation:appear forwards 0.7s;
   flex:1;
 }
-.div-home-HBwebsites .ul_content li:hover{
-  border:1px solid #363f93;
-}
 .div-home-HBwebsites .ul_content li{
-  background:#fff;
-
-  margin:0.5%;
-  width:19%;
+  padding: 5px;
+  width:20%;
 
   text-align:center;
 }
+.div-home-HBwebsites .ul_content li img:hover{
+  border:1px solid #363f93;
+}
 .div-home-HBwebsites .ul_content li img{
-  width: 100%;
-
   box-shadow: 0px 2px 5px #ddd;
   border: 1px solid #ccc;
+  width: 100%;
+
   border-radius: 4px;
 }
 .current{
@@ -76,8 +77,10 @@ div.annonce{
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
-  justify-content:center;
-  align-items:center;
+  justify-content:flex-start;
+  align-items:flex-start;
+  align-self: center;
+  
 }
 
 .div-home-HBwebsites.annonce #pagination button.active,

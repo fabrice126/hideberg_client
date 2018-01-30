@@ -12,18 +12,23 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+
+    
+    margin-bottom: 60px;
 }
 .div-home-HBtabs nav button.bt_tablinks{
+    /* background: crimson; */
     color: #bababa;
 
     font-size: 20px;
-    padding: 30px 0px;
+    padding: 10px;
     flex:1;
 
     display: block;
     font-weight: bold;
     text-decoration: none;
     text-transform: capitalize;
+    text-align: center;
     cursor: pointer;
 }
 .div-home-HBtabs nav button.bt_tablinks:hover,
@@ -31,7 +36,6 @@
     color: #363f93;
 }
 .div-home-HBtabs section article.article_content{
-    background: #fff;
 
     display: none;
 }

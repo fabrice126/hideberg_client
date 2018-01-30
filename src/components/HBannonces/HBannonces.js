@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './HBwebsites.css';
+import './HBannonces.css';
 import { Link } from 'react-router-dom';
 
-class HBwebsites extends Component {
+class HBannonces extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             elements: this.props.elements,
             nbContentTotal: this.props.elements.length,
@@ -18,21 +18,25 @@ class HBwebsites extends Component {
     }
     componentDidMount() {
         if (this.props.duration) this.doAnimation();
-        fetch(`http://localhost:5001/api/continent/europe/country/france/sector/${this.props.sector}/websites`)
+        let _url = `http://localhost:5001/api/continent/europe/country/france/sector/${this.props.sector}/annonces`;
+        console.log(_url);
+        fetch(_url)
             .then(response => response.json())
             .then(data => {
+                console.log(data);
+                console.log(data.length);
                 this.setState({
                     elementsJSON: data,
                     nbContentTotal: data.length,
                     pageNumTotal: Math.ceil(data.length / this.props.nbElementsPerPage)
                 });
             });
-
     }
 
     componentWillUnmount() {
         if (this.props.duration) clearInterval(this.refreshAnnonce);
     }
+
 
     doAnimation() {
         let _numPage = 0;
@@ -68,9 +72,12 @@ class HBwebsites extends Component {
             if (i >= (pageNum * this.state.nbContentTotalPerPage) && i < nbContentVisibleMax) {
                 tabLi.push(
                     <li key={"li_" + i}>
-                        <Link to={data[i].link_url} target="_blank" key={"a_" + i}>
-                            <img src={`/images/website/${data[i].website_label}.png`} alt={data[i].website_label} />
-                        </Link>
+                        <img src="/images/hidebergoffer.png" className="img_logo" />
+                        {/* <Link to={} target="_blank" key={"a_" + i}> */}
+                            <img src={`/images/website/${data[i].website_label}.png`} alt={data[i].website_label} className="img_job" />
+                        {/* </Link> */}
+                        {/* <span className="span_jobtitle">{data[i].website_label}</span> */}
+                        <span className="span_jobsummary">{data[i].annonce_description}</span>
                     </li>
                 );
             }
@@ -79,6 +86,7 @@ class HBwebsites extends Component {
     }
 
     render() {
+
         let nbContentVisibleMax = 0;
 
         let _listContent = [];
@@ -106,11 +114,11 @@ class HBwebsites extends Component {
             if (this.state.pageNumTotal > 1) _listPagination.push(<button id={'bt_' + pageNum} key={'bt_' + pageNum} onClick={(evt) => this.viewPage(pageNum)} className={"bt_tablinks " + classActive}>{btContent}</button>)
         }
         return (
-            <div className={"div-home-HBwebsites " + classAnnonce} ref="myhome">
+            <div className={"div-home-HBannonces " + classAnnonce} ref="myhome">
                 <article id='home'>{_listContent}</article>
                 <nav id='pagination'>{_listPagination}</nav>
             </div>
         )
     }
 }
-export default HBwebsites;
+export default HBannonces;

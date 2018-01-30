@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-  }
+}
 
 .div-home-HBmapcountry .aside_title {
     color: #363f93;
@@ -14,4 +14,8 @@
     font-weight: bold;
     text-align: center;
     text-transform: capitalize;
+}
+
+.div-home-HBmapcountry img#img_country{
+    max-width: 180px;
 }
