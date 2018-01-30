@@ -33,7 +33,6 @@ export default class Home extends Component {
                         <HBmapcountry key={"blockcountry"} elements={elementsCountry} />
                         <HBwebsites key={"pg_1"} elements={elementsAnnonce} nbElementsPerPage='1' duration="4" />
                     </aside>
-
                     <article className="home-article">
                         <HBtabs elements={elementsSectorTabs} contents={elementsSectorContents} />
                     </article>
