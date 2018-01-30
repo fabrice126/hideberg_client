@@ -19,6 +19,6 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "build-old": "react-scripts build",
-    "build": "npm-run-all build-css build-js"
+    "build": "npm-run-all build-css && react-scripts build"
   }
 }
