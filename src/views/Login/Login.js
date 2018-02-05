@@ -22,7 +22,7 @@ export default class Login extends Component {
         // 2 : next : 2; back : 1  -- bt : hidden
         // 3 : next : hidden; back : 2  -- bt : view
         console.log('_isNext',_isNext);
-        if (_step == 1) {
+        if (_step === 1) {
             console.log("_step===" + 1 + " finished");
             if (_isNext) {
                 _step = 2;
@@ -100,10 +100,10 @@ export default class Login extends Component {
 
         // Récupération des valeurs des champs du formulaire
         // en prévision d'un envoi multipart en ajax/fetch
-        let donneesFormulaire = new FormData(form);
+        //let donneesFormulaire = new FormData(form);
 
         console.log(form);
-        let url = "/api/post";
+        //let url = "/api/post";
 
         // fetch(url, {
         //     method: "POST",

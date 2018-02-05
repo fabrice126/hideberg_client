@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './HBannonces.css';
-import { Link } from 'react-router-dom';
 
 class HBannonces extends Component {
     constructor(props) {
@@ -72,7 +71,7 @@ class HBannonces extends Component {
             if (i >= (pageNum * this.state.nbContentTotalPerPage) && i < nbContentVisibleMax) {
                 tabLi.push(
                     <li key={"li_" + i}>
-                        <img src="/images/hidebergoffer.png" className="img_logo" />
+                        <img src="/images/hidebergoffer.png" className="img_logo" alt="hidebergoffer" />
                         {/* <Link to={} target="_blank" key={"a_" + i}> */}
                             <img src={`/images/website/${data[i].website_label}.png`} alt={data[i].website_label} className="img_job" />
                         {/* </Link> */}

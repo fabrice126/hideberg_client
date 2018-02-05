@@ -7,8 +7,8 @@ class HBmap extends Component {
     constructor(props) {
         super(props);
 
-        this.availableCountries=['france'];
-        this.availableContinents=['europe'];
+        this.availableCountries = ['france'];
+        this.availableContinents = ['europe'];
 
         const { continent } = this.props;
         this.imgpath = "/images/map/";
@@ -72,11 +72,12 @@ class HBmap extends Component {
             _to = continent ? { pathname: `/country/${c}/sector/design` } : { pathname: `/continent/${c}` };
 
             if (continent) {
-                if (this.availableCountries.indexOf(c)===-1) _to = { pathname: `/404`, errMsg: "Ce pays arrivera bientôt" };
-                selectCountry.push(<option key={"option_" + c}>{c}</option>);
-            }else{
+                if (this.availableCountries.indexOf(c) === -1) _to = { pathname: `/404`, errMsg: "Ce pays arrivera bientôt" };
+                //selectCountry.push(<option key={"option_" + c}>{c}</option>);
+                selectCountry.push(<li key={"option_" + c}><a href="#">{c}</a></li>);
+            } else {
                 //if (!_data[c].countries) _to = { pathname: `/404`, errMsg: "Ce continent arrivera bientôt" };
-                if (this.availableContinents.indexOf(c)===-1) _to = { pathname: `/404`, errMsg: "Ce continent arrivera bientôt" };
+                if (this.availableContinents.indexOf(c) === -1) _to = { pathname: `/404`, errMsg: "Ce continent arrivera bientôt" };
             }
             console.log(c);
             divFilters.push(
@@ -98,13 +99,34 @@ class HBmap extends Component {
         console.log(_to);
     }
 
+    myFunction(evt) {
+        var filter, ul, li, a, i;
+        filter = evt.target.value.toUpperCase();
+        ul = document.querySelector("#myUL");
+        console.log(ul);
+        li = ul.querySelectorAll("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+    
+            }
+        }
+    }
+
     render() {
 
         return (
             <div className="div-home-HBmap">
                 <span className={"sp_success " + this.state.hidden}>Émerger votre emploi à l'international.</span>
                 <span className="sp_select">{this.state.sp_select}</span>
-                <select className={this.state.hiddenSelectCountry} onChange={(evt) => { this.selectedCountry(evt) }}>{this.state.divFilters.selectCountry}</select>
+                {/* <select className={this.state.hiddenSelectCountry} onChange={(evt) => { this.selectedCountry(evt) }}>{this.state.divFilters.selectCountry}</select> */}
+                {/* <div>
+                    <input type="text" id="myInput" onKeyUp={(evt) => { this.myFunction(evt) }} placeholder="Search for names.." title="Type in a name" />
+                    <ul id="myUL">{this.state.divFilters.selectCountry}</ul>
+                </div> */}
                 <div className={"div_map " + this.state.classContinent}>
                     {this.state.divFilters.divFilters}
                     <img id="img_map" src={this.state.imgsrc} alt="map" />

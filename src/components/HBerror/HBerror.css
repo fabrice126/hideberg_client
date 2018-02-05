@@ -7,7 +7,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch; 
+  align-items: center; 
 }
 
 .div-home-HBerror span{
@@ -17,6 +17,11 @@
   padding: 20px;
 }
 
+.div-home-HBerror img{
+  width: 200px;
+  vertical-align: top;
+  margin-bottom: 10px;
+}
 .span_main{
   color: #363f93;
 

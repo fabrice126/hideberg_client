@@ -7,7 +7,7 @@ export default class Page404 extends Component {
     render() {
         return (
             <div className="div-home-Page404">
-                <HBerror errMsg={this.props.location.errMsg || "404 not found"} />
+                <HBerror errMsg={this.props.location.errMsg || 404} />
             </div>
         );
     }
