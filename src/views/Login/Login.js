@@ -13,13 +13,13 @@ export default class Login extends Component {
         this.state = {
             indexVisible: 0,
             totalStep: null,
-            form_email: null,
-            form_password: null,
-            form_nationality: this.tNationalities[0],
-            form_profession: this.tProfessions[0],
-            form_levelstudy: this.tLevelStudies[0],
-            form_sector: this.tSectors[0],
-            form_destination: this.tDestinations[0],
+            user_email: null,
+            user_password: null,
+            user_nationality: this.tNationalities[0],
+            user_affiliated_sector: this.tProfessions[0],
+            user_education_level: this.tLevelStudies[0],
+            user_search_sector: this.tSectors[0],
+            user_destination: this.tDestinations[0],
         }
     }
     loginPrev = () => {
@@ -31,15 +31,9 @@ export default class Login extends Component {
         if (indexVisible <= totalStep) this.setState({ indexVisible: ++indexVisible })
     }
     postRequest = () => {
-        const { form_email, form_password, form_nationality, form_profession, form_levelstudy, form_sector, form_destination } = this.state;
+        const { user_email, user_password, user_nationality, user_affiliated_sector, user_education_level, user_search_sector, user_destination } = this.state;
         let formJSON = {
-            user_email: form_email,
-            user_password: form_password,
-            user_affiliated_sector: form_profession,
-            user_education_level: form_levelstudy,
-            user_search_sector: form_sector,
-            user_nationality: form_nationality,
-            user_destination: form_destination
+            user_email, user_password, user_affiliated_sector, user_education_level, user_search_sector, user_nationality, user_destination
         }
         console.log(formJSON);
         // Récupération des valeurs des champs du formulaire
@@ -55,7 +49,7 @@ export default class Login extends Component {
         else this.setState({ totalStep: 0 });
     }
     render() {
-        let { indexVisible, totalStep, form_destination, form_levelstudy, form_sector, form_profession, form_nationality } = this.state;
+        let { indexVisible, totalStep, user_destination, user_education_level, user_search_sector, user_affiliated_sector, user_nationality } = this.state;
         return (
             <div className="div-home-HBlogin">
                 <section>
@@ -64,41 +58,41 @@ export default class Login extends Component {
                         <article className={`formLogin ${indexVisible === 0 ? "current" : ""}`}>
                             <div>
                                 <span>Email</span>
-                                <input name="form_email" type="email" placeholder="Votre email" required onChange={this.handleChange} />
+                                <input name="user_email" type="email" placeholder="Votre email" required onChange={this.handleChange} />
                             </div>
                             <div>
                                 <span>Mot de passe</span>
-                                <input name="form_password" type="password" placeholder="Votre mot de passe" required onChange={this.handleChange} />
+                                <input name="user_password" type="password" placeholder="Votre mot de passe" required onChange={this.handleChange} />
                             </div>
                         </article>
                         <article className={`formLogin ${indexVisible === 1 ? "current" : ""}`}>
                             <div>
                                 <span>Nationalité</span>
-                                <select value={form_nationality} name="form_nationality" onChange={this.handleChange}>
+                                <select value={user_nationality} name="user_nationality" onChange={this.handleChange}>
                                     {this.tNationalities.map((nationality, i) => <option key={i}>{nationality}</option>)}
                                 </select>
                             </div>
                             <div>
                                 <span>Profession</span>
-                                <select value={form_profession} name="form_profession" onChange={this.handleChange}>
+                                <select value={user_affiliated_sector} name="user_affiliated_sector" onChange={this.handleChange}>
                                     {this.tProfessions.map((profession, i) => <option key={i}>{profession}</option>)}
                                 </select>
                             </div>
                             <div>
                                 <span>Niveau d’étude</span>
-                                <select value={form_levelstudy} name="form_levelstudy" onChange={this.handleChange}>
+                                <select value={user_education_level} name="user_education_level" onChange={this.handleChange}>
                                     {this.tLevelStudies.map((levelstudy, i) => <option key={i}>{levelstudy}</option>)}
                                 </select>
                             </div>
                             <div>
                                 <span>Secteur recherché</span>
-                                <select value={form_sector} name="form_sector" onChange={this.handleChange}>
+                                <select value={user_search_sector} name="user_search_sector" onChange={this.handleChange}>
                                     {this.tSectors.map((sector, i) => <option key={i}>{sector}</option>)}
                                 </select>
                             </div>
                             <div>
                                 <span>Destination désirée</span>
-                                <select value={form_destination} name="form_destination" onChange={this.handleChange}>
+                                <select value={user_destination} name="user_destination" onChange={this.handleChange}>
                                     {this.tDestinations.map((destination, i) => <option key={i}>{destination}</option>)}
                                 </select>
                             </div>
