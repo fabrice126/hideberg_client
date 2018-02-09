@@ -84,13 +84,11 @@
     padding:15px;
     transition: 0.3s;
   }
-  .div-home-HBlogin article input{
-  }
+
   .div-home-HBlogin div.div_button{
     align-self: center;
   }
   
-  /* #bt_loginNext, #bt_loginBack{} */
   .div-home-HBlogin button:hover{
     background:#ddd;
     color:#363f93;
