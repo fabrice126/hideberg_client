@@ -12,7 +12,6 @@ class HBcomeback extends Component {
     }
 
     render() {
-        //console.log(this.state.elements);
         return (
             <div className="div-home-HBcomeback">
                 <Link to={this.state._to} id="link_back"><i className="fa fa-chevron-left"></i> retour</Link>

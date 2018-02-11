@@ -12,7 +12,6 @@ class HBheader extends Component {
     }
 
     render() {
-        //console.log(this.state.elements);
         return (
             <div className="div-home-HBheader">
                 <header>

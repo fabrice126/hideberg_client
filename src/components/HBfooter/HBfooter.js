@@ -12,7 +12,6 @@ class HBfooter extends Component {
     }
 
     render() {
-        //console.log(this.state.elements);
         return (
             <div className="div-home-HBfooter">
                 <footer>

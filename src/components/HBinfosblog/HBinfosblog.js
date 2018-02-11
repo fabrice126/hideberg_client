@@ -16,12 +16,9 @@ class HBinfosblog extends Component {
 
     componentDidMount() {
         let _url = `http://localhost:5001/api/continent/europe/country/france/infos`;
-        console.log(_url);
         fetch(_url)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                console.log(data.length);
                 this.setState({
                     elementsJSON: data
                 });

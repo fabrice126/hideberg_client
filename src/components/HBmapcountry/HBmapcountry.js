@@ -11,7 +11,6 @@ class HBmapcountry extends Component {
     }
 
     render() {
-        //console.log(this.state.elements);
         return (
             <div className="div-home-HBmapcountry">
                 <span id="span_country" className="aside_title">{this.props.elements.country}</span>

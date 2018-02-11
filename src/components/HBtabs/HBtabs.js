@@ -12,7 +12,6 @@ class HBtabs extends Component {
     }
 
     viewPage(_pageNum) {
-        //console.log(this.refs.myhome);
         this.refs.myTabs.querySelectorAll('article.article_content').forEach(el => {
             if (el.id === 'article_' + _pageNum) {
                 if (!el.classList.contains('current')) el.classList.add('current');

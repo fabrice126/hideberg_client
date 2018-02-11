@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import './HBfilter.css';
-import { Link } from 'react-router-dom';
+import confMAP from '../HBmap/HBmap_conf.js';
 
 class HBfilter extends Component {
     constructor(props) {
         super(props);
 
         const { continent } = this.props;
-        console.log(continent);
+        this.list="";
+        
+        let countries = Object.keys(confMAP[continent].countries);
+        this.list=countries.map(
+            (elem,index)=>{
+                return <li key={"li_"+index}><a href={`/country/${elem}/sector/design`}>{elem}</a></li>;
+            }
+        )
     }
 
-   
+
     myFunction(evt) {
         var filter, ul, li, a, i;
         filter = evt.target.value.toUpperCase();
         ul = document.querySelector("#myUL");
-        console.log(ul);
         li = ul.querySelectorAll("li");
         for (i = 0; i < li.length; i++) {
             a = li[i].getElementsByTagName("a")[0];
@@ -23,19 +29,16 @@ class HBfilter extends Component {
                 li[i].style.display = "";
             } else {
                 li[i].style.display = "none";
-    
             }
         }
     }
 
     render() {
-
         return (
             <div className="div-home-HBfilter">
-                {/* <select className={this.state.hiddenSelectCountry} onChange={(evt) => { this.selectedCountry(evt) }}>{this.state.divFilters.selectCountry}</select> */}
                 <div>
-                    <input type="text" id="myInput" onKeyUp={(evt) => { this.myFunction(evt) }} placeholder="Search for names.." title="Type in a name" />
-                    {/* <ul id="myUL">{this.state.divFilters.selectCountry}</ul> */}
+                    <input type="text" id="myInput" onKeyUp={(evt) => { this.myFunction(evt) }} placeholder="Rechercher un pays ..." title="Type in a name" />
+                    <ul ref="myUL" id="myUL">{this.list}</ul>
                 </div>
             </div>
         )
