@@ -14,7 +14,7 @@ class HBmap extends Component {
         const { continent } = this.props;
         this.imgpath = "/images/map/";
 
-        this.popupMsg="";
+        this.popupMsg = "";
         this.state = this.loadMapConfig(continent);
     }
 
@@ -37,7 +37,7 @@ class HBmap extends Component {
             selectCountry: [],
             hidden: (continent) ? "hidden" : "",
             hiddenSelectCountry: (continent) ? "" : "hidden",
-            popupMsg:this.popupMsg
+            popupMsg: this.popupMsg
         }
     }
 
@@ -75,23 +75,23 @@ class HBmap extends Component {
             _to = continent ? { pathname: `/country/${c}/sector/design` } : { pathname: `/continent/${c}` };
 
             if (continent) {
-                if (this.availableCountries.indexOf(c) === -1) _to ="#";
+                if (this.availableCountries.indexOf(c) === -1) _to = "#";
                 //selectCountry.push(<option key={"option_" + c}>{c}</option>);
                 //selectCountry.push(<li key={"option_" + c}><a href="#">{c}</a></li>);
             } else {
                 //if (!_data[c].countries) _to = { pathname: `/404`, errMsg: "Ce continent arrivera bientôt" };
-                if (this.availableContinents.indexOf(c) === -1) _to ="#";
+                if (this.availableContinents.indexOf(c) === -1) _to = "#";
             }
-            if (_to==="#"){
+            if (_to === "#") {
                 divFilters.push(
-                    <button key={"div_" + c} onClick={()=>this.openPopup(continent)}>
+                    <button key={"div_" + c} onClick={() => this.openPopup(continent)}>
                         <div key={"div_" + c} id={"div_" + c} className="div_filter" style={liStyle}
                             onMouseEnter={(evt) => this.changeImgPath(c)}
                             onMouseLeave={(evt) => this.changeImgPath("empty")}>
                         </div>
                     </button>
                 );
-            }else{
+            } else {
                 divFilters.push(
                     <Link key={"div_" + c} to={_to}>
                         <div key={"div_" + c} id={"div_" + c} className="div_filter" style={liStyle}
@@ -105,27 +105,27 @@ class HBmap extends Component {
         return { divFilters, selectCountry };
     }
 
-    openPopup(_continent){
-        let _msg="Ce continent arrivera bientôt"; 
-        if(_continent){
-            _msg="Ce pays arrivera bientôt";
-        }
+    openPopup(_continent) {
+        let _msg = "Oups ! Ce lien n'est pas encore disponible";
+        // if(_continent){
+        //     _msg="Ce pays arrivera bientôt";
+        // }
         this.setState({
-            popupMsg:_msg
+            popupMsg: _msg
         })
     }
 
-    closePopup(){
+    closePopup() {
         this.setState({
-            popupMsg:""
+            popupMsg: ""
         })
     }
 
     render() {
         return (
             <div className="div-home-HBmap">
-                { 
-                    (this.state.popupMsg)?<div onClick={()=>this.closePopup()}><HBpopup msg={this.state.popupMsg} /></div>:""
+                {
+                    (this.state.popupMsg) ? <div onClick={() => this.closePopup()}><HBpopup msg={this.state.popupMsg} /></div> : ""
                 }
                 <span className={"sp_success " + this.state.hidden}>Émerger votre emploi à l'international.</span>
                 <span className="sp_select">{this.state.sp_select}</span>

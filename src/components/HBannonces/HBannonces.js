@@ -17,7 +17,8 @@ class HBannonces extends Component {
     }
     componentDidMount() {
         if (this.props.duration) this.doAnimation();
-        let _url = `http://localhost:5001/api/continent/europe/country/france/sector/${this.props.sector}/annonces`;
+        console.log(process.env.REACT_APP_API_HOST);
+        let _url = `${process.env.REACT_APP_API_HOST}/api/continent/europe/country/france/sector/${this.props.sector}/annonces`;
         fetch(_url)
             .then(response => response.json())
             .then(data => {

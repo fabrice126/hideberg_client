@@ -45,8 +45,8 @@
   left: 0px;
   right: 0px;
 }
-
-.div-home-HBpopup .div_popup button.bt_close:hover{
+/*TO DELETE*/
+/* .div-home-HBpopup .div_popup button.bt_close:hover{
   color: #363f93;
 }
 .div-home-HBpopup .div_popup button.bt_close{
@@ -60,14 +60,14 @@
   font-size: 20px;
 
   cursor: pointer;
-}
+} */
 .div-home-HBpopup .div_popup span{
   font-weight: bold;
   text-align: center;
 }
 
 .div-home-HBpopup .div_popup img{
-  width: 30%;
+  width: 50%;
   margin-bottom: 50px;
   vertical-align: top;
 }

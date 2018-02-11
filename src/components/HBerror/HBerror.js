@@ -16,10 +16,10 @@ class HBerror extends Component {
 
     render() {
         let _errMsg=this.props.errMsg;
-        let _errIMG = <img src="/images/icons/soon_icons.png" alt="{_errMsg}" />;
+        let _errIMG = <img src="/images/icons/soon_icons.svg" alt="{_errMsg}" />;
         if (_errMsg===404 || !_errMsg) {
             _errMsg="404 not found";
-            _errIMG = <img src="/images/icons/404_icons.png" alt="{_errMsg}" />;
+            _errIMG = <img src="/images/icons/404_icons.svg" alt="{_errMsg}" />;
         }
         return (
             <section className="div-home-HBerror">

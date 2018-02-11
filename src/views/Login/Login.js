@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../../index.css';
 import './Login.css';
+import HBpopup from '../../components/HBpopup/HBpopup';
+
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -11,6 +13,7 @@ export default class Login extends Component {
         this.tProfessions = ["Etudiant", "Profesionnel", "Demandeur d’emploi(e)", "Autre(s)"];
         this.tNationalities = [...this.tDestinations];
         this.state = {
+            wellSubscribe: false,
             indexVisible: 0,
             totalStep: null,
             user_email: null,
@@ -36,11 +39,19 @@ export default class Login extends Component {
             user_email, user_password, user_affiliated_sector, user_education_level, user_search_sector, user_nationality, user_destination
         }
         // Récupération des valeurs des champs du formulaire
-        fetch("http://127.0.0.1:5001/api/signup", {
+        fetch(`${process.env.REACT_APP_API_HOST}/api/signup`, {
             method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formJSON)
         }).then((res) => res.json())
-            .then((res) => console.log(res))
-            .catch((err) => console.error(err));
+            .then((res) => {
+                if (!res.token) throw res.error_msg;
+                localStorage.setItem("token", res.token);
+                this.setState({ wellSubscribe: true });
+            })
+            .catch((err) => {
+                //Afficher un toast indiquant l'erreur
+                console.log("DANS ERROR");
+                console.error(err);
+            });
     }
     handleChange = (event) => this.setState({ [event.target.name]: event.target.value });
     componentDidMount = () => {
@@ -48,57 +59,71 @@ export default class Login extends Component {
         else this.setState({ totalStep: 0 });
     }
     render() {
-        let { indexVisible, totalStep, user_destination, user_education_level, user_search_sector, user_affiliated_sector, user_nationality } = this.state;
+        let { indexVisible, wellSubscribe, totalStep, user_destination, user_education_level, user_search_sector, user_affiliated_sector, user_nationality } = this.state;
+
         return (
             <div className="div-home-HBlogin">
-                <section>
-                    <span className="span_formTitle">Créez un compte gratuitement</span>
-                    <form ref={(form) => { this.form = form; }} >
-                        <article className={`formLogin ${indexVisible === 0 ? "current" : ""}`}>
-                            <div>
-                                <span>Email</span>
-                                <input name="user_email" type="email" placeholder="Votre email" required onChange={this.handleChange} />
-                            </div>
-                            <div>
-                                <span>Mot de passe</span>
-                                <input name="user_password" type="password" placeholder="Votre mot de passe" required onChange={this.handleChange} />
-                            </div>
-                        </article>
-                        <article className={`formLogin ${indexVisible === 1 ? "current" : ""}`}>
-                            <div>
-                                <span>Nationalité</span>
-                                <select value={user_nationality} name="user_nationality" onChange={this.handleChange}>
-                                    {this.tNationalities.map((nationality, i) => <option key={i}>{nationality}</option>)}
-                                </select>
-                            </div>
-                            <div>
-                                <span>Profession</span>
-                                <select value={user_affiliated_sector} name="user_affiliated_sector" onChange={this.handleChange}>
-                                    {this.tProfessions.map((profession, i) => <option key={i}>{profession}</option>)}
-                                </select>
-                            </div>
-                            <div>
-                                <span>Niveau d’étude</span>
-                                <select value={user_education_level} name="user_education_level" onChange={this.handleChange}>
-                                    {this.tLevelStudies.map((levelstudy, i) => <option key={i}>{levelstudy}</option>)}
-                                </select>
-                            </div>
-                            <div>
-                                <span>Secteur recherché</span>
-                                <select value={user_search_sector} name="user_search_sector" onChange={this.handleChange}>
-                                    {this.tSectors.map((sector, i) => <option key={i}>{sector}</option>)}
-                                </select>
-                            </div>
-                            <div>
-                                <span>Destination désirée</span>
-                                <select value={user_destination} name="user_destination" onChange={this.handleChange}>
-                                    {this.tDestinations.map((destination, i) => <option key={i}>{destination}</option>)}
-                                </select>
-                            </div>
-                        </article>
-                    </form>
-                    {totalStep !== null ? this.checkButtons() : ""}
-                </section>
+                {
+                    wellSubscribe ?
+                        <section>
+                            <span className="span_formTitle">
+                                <HBpopup img={"/images/icons/welcome.svg"} msg={'Bienvenue'} />
+                            </span>
+                            {setTimeout(() => this.props.history.push('/'), 3000)}
+                        </section>
+                        :
+                        <section>
+                            <span className="span_formTitle">Créez un compte gratuitement</span>
+                            <form ref={(form) => { this.form = form; }} >
+                                <article className={`formLogin ${indexVisible === 0 ? "current" : ""}`}>
+                                    <div>
+                                        <span>Email</span>
+                                        <input name="user_email" type="email" placeholder="Votre email" required onChange={this.handleChange} />
+                                    </div>
+                                    <div>
+                                        <span>Mot de passe</span>
+                                        <input name="user_password" type="password" placeholder="Votre mot de passe" required onChange={this.handleChange} />
+                                    </div>
+                                </article>
+                                <article className={`formLogin ${indexVisible === 1 ? "current" : ""}`}>
+                                    <div>
+                                        <span>Nationalité</span>
+                                        <select value={user_nationality} name="user_nationality" onChange={this.handleChange}>
+                                            {this.tNationalities.map((nationality, i) => <option key={i}>{nationality}</option>)}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <span>Profession</span>
+                                        <select value={user_affiliated_sector} name="user_affiliated_sector" onChange={this.handleChange}>
+                                            {this.tProfessions.map((profession, i) => <option key={i}>{profession}</option>)}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <span>Niveau d’étude</span>
+                                        <select value={user_education_level} name="user_education_level" onChange={this.handleChange}>
+                                            {this.tLevelStudies.map((levelstudy, i) => <option key={i}>{levelstudy}</option>)}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <span>Secteur recherché</span>
+                                        <select value={user_search_sector} name="user_search_sector" onChange={this.handleChange}>
+                                            {this.tSectors.map((sector, i) => <option key={i}>{sector}</option>)}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <span>Destination désirée</span>
+                                        <select value={user_destination} name="user_destination" onChange={this.handleChange}>
+                                            {this.tDestinations.map((destination, i) => <option key={i}>{destination}</option>)}
+                                        </select>
+                                    </div>
+                                </article>
+                            </form>
+                            {totalStep !== null && this.checkButtons()}
+                            {
+                                /*wellSubscribe && <HBpopup msg='Félicitation vous êtes maintenant inscrit' /> && setTimeout(() => this.props.history.push('/'), 3000)*/
+                            }
+                        </section>
+                }
             </div>
         )
     }

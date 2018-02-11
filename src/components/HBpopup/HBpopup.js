@@ -5,6 +5,7 @@ class HBpopup extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            img: this.props.img || "/images/icons/soon_icons.svg",
             msg: this.props.msg || ""
         }
     }
@@ -14,9 +15,8 @@ class HBpopup extends Component {
             <div ref="hbPopup" className="div-home-HBpopup">
                 <div className="div_shadow"></div>
                 <div className="div_popup">
-                    <button className="bt_close">X</button>
-                    <img src="/images/icons/soon_icons.png" alt="{this.props.msg}" />
-                    <span className="span_main">{this.props.msg}</span>
+                    <img src={this.state.img} alt={this.state.msg} />
+                    <span className="span_main">{this.state.msg}</span>
                 </div>
             </div>
         )

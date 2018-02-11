@@ -6,7 +6,9 @@
   background-size: cover;
   height: 100%;
 }
-
+.div-home-HBlogin input::placeholder {
+  color: #EEE;
+} 
 .div-home-HBlogin section{
     /* box-shadow: 0px 2px 1px #ccc; */
     

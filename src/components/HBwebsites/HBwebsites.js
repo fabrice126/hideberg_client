@@ -18,7 +18,8 @@ class HBwebsites extends Component {
     }
     componentDidMount() {
         if (this.props.duration) this.doAnimation();
-        fetch(`http://localhost:5001/api/continent/europe/country/france/sector/${this.props.sector}/websites`)
+        console.log(process.env.REACT_APP_API_HOST);
+        fetch(`${process.env.REACT_APP_API_HOST}/api/continent/europe/country/france/sector/${this.props.sector}/websites`)
             .then(response => response.json())
             .then(data => {
                 this.setState({
