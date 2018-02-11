@@ -35,7 +35,6 @@ export default class Login extends Component {
         let formJSON = {
             user_email, user_password, user_affiliated_sector, user_education_level, user_search_sector, user_nationality, user_destination
         }
-        console.log(formJSON);
         // Récupération des valeurs des champs du formulaire
         fetch("http://127.0.0.1:5001/api/signup", {
             method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formJSON)

@@ -1,12 +1,25 @@
 .Continent section{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
 }
 
 .Continent .div-home-HBmap{
-    flex:5;
+    flex:2;
+    /* max-width: 50%; */
 }
 .Continent .div-home-HBannonces{
-    position: absolute;
-    top: 30%;
-    right: 50px;
-    width: 300px;
+    flex:1;
+    /* max-width: 300px; */
+    max-height: 400px;
+    max-width: 25%;
+    margin: 20px;
+}
+.Continent .div-home-HBfilter{
+    /* max-width: 300px; */
+    max-width: 25%;
+    margin: 20px;
+    flex:1;
 }

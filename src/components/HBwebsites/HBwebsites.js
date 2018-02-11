@@ -44,7 +44,6 @@ class HBwebsites extends Component {
     }
 
     viewPage(_pageNum) {
-        // console.log(this.refs.myhome);
         this.refs.myhome.querySelectorAll('ul.ul_content').forEach(ul => {
             if (ul.id === 'page_' + _pageNum) {
                 if (!ul.classList.contains('current')) ul.classList.add('current');

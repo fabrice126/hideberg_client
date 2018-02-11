@@ -18,12 +18,9 @@ class HBannonces extends Component {
     componentDidMount() {
         if (this.props.duration) this.doAnimation();
         let _url = `http://localhost:5001/api/continent/europe/country/france/sector/${this.props.sector}/annonces`;
-        console.log(_url);
         fetch(_url)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                console.log(data.length);
                 this.setState({
                     elementsJSON: data,
                     nbContentTotal: data.length,
@@ -47,7 +44,6 @@ class HBannonces extends Component {
     }
 
     viewPage(_pageNum) {
-        // console.log(this.refs.myhome);
         this.refs.myhome.querySelectorAll('ul.ul_content').forEach(ul => {
             if (ul.id === 'page_' + _pageNum) {
                 if (!ul.classList.contains('current')) ul.classList.add('current');
