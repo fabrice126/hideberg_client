@@ -5,7 +5,7 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         //Ces tableaux seront chargés via une requete
-        this.tDestinations = ["France", "Espagne", "Portugal", "Italie", "Suisse", "Allemagne"];
+        this.tDestinations = ["Allemagne", "Autriche", "Belgique", "Espagne", "France", "Grande-Bretagne", "Hongrie", "Irlande", "Italie", "Luxembourg", "Pays-Bas", "Portugal", "Suisse"];
         this.tSectors = ["Design", "Programmation", "Ingénierie", "Marketing", "Architecture", "Finance"];
         this.tLevelStudies = ["BAC", "BTS / BTEC Higher National Diploma", "Licence / BA / BS / BSc", "Master / MS / MSc / MA", "Diplôme d’ingénieur / Master’s Degree in Engineering", "Doctorat / PhD"];
         this.tProfessions = ["Etudiant", "Profesionnel", "Demandeur d’emploi(e)", "Autre(s)"];
@@ -35,7 +35,6 @@ export default class Login extends Component {
         let formJSON = {
             user_email, user_password, user_affiliated_sector, user_education_level, user_search_sector, user_nationality, user_destination
         }
-        console.log(formJSON);
         // Récupération des valeurs des champs du formulaire
         fetch("http://127.0.0.1:5001/api/signup", {
             method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formJSON)
