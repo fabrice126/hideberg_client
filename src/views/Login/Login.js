@@ -16,8 +16,10 @@ export default class Login extends Component {
             wellSubscribe: false,
             indexVisible: 0,
             totalStep: null,
-            user_email: null,
-            user_password: null,
+            user_email_valid: true,
+            user_password_valid: true,
+            user_email: "",
+            user_password: "",
             user_nationality: this.tNationalities[0],
             user_affiliated_sector: this.tProfessions[0],
             user_education_level: this.tLevelStudies[0],
@@ -30,11 +32,35 @@ export default class Login extends Component {
         if (indexVisible !== 0) this.setState({ indexVisible: --indexVisible })
     }
     loginNext = () => {
-        let { indexVisible, totalStep } = this.state;
-        if (indexVisible <= totalStep) this.setState({ indexVisible: ++indexVisible })
+        let { indexVisible, totalStep, user_email_valid, user_password_valid } = this.state;
+        let hasError = false;
+        if (indexVisible === 0) {
+            if (this.emailInput.validity.patternMismatch || this.emailInput.validity.valueMissing ||
+                this.emailInput.validity.tooLong || this.emailInput.validity.tooShort || this.emailInput.validity.typeMismatch) {
+                hasError = true;
+                if (user_email_valid === true) this.setState({ user_email_valid: false })
+            } else {
+                if (user_email_valid === false) this.setState({ user_email_valid: true })
+            }
+            if (this.passwordInput.validity.patternMismatch || this.passwordInput.validity.valueMissing ||
+                this.passwordInput.validity.tooLong || this.passwordInput.validity.tooShort || this.passwordInput.validity.typeMismatch) {
+                if (user_password_valid === true) this.setState({ user_password_valid: false })
+                hasError = true;
+            } else {
+                if (user_password_valid === false) this.setState({ user_password_valid: true })
+            }
+        }
+        //S'il n'y a pas d'erreur on active le bouton
+        if (indexVisible <= totalStep && !hasError) this.setState({ indexVisible: ++indexVisible })
     }
-    postRequest = () => {
-        const { user_email, user_password, user_nationality, user_affiliated_sector, user_education_level, user_search_sector, user_destination } = this.state;
+    postRequest = (e) => {
+        const { user_email,
+            user_password,
+            user_nationality,
+            user_affiliated_sector,
+            user_education_level,
+            user_search_sector,
+            user_destination } = this.state;
         let formJSON = {
             user_email, user_password, user_affiliated_sector, user_education_level, user_search_sector, user_nationality, user_destination
         }
@@ -52,15 +78,26 @@ export default class Login extends Component {
                 console.log("DANS ERROR");
                 console.error(err);
             });
+        e.preventDefault()
     }
     handleChange = (event) => this.setState({ [event.target.name]: event.target.value });
     componentDidMount = () => {
-        if (this.form.childElementCount > 0) this.setState({ totalStep: this.form.childElementCount - 1 })
+        if (this.formInput.childElementCount > 0) this.setState({ totalStep: this.formInput.childElementCount - 1 })
         else this.setState({ totalStep: 0 });
     }
     render() {
-        let { indexVisible, wellSubscribe, totalStep, user_destination, user_education_level, user_search_sector, user_affiliated_sector, user_nationality } = this.state;
-
+        let { indexVisible,
+            wellSubscribe,
+            user_password_valid,
+            user_email_valid,
+            totalStep,
+            user_email,
+            user_password,
+            user_destination,
+            user_education_level,
+            user_search_sector,
+            user_affiliated_sector,
+            user_nationality } = this.state;
         return (
             <div className="div-home-HBlogin">
                 {
@@ -74,15 +111,26 @@ export default class Login extends Component {
                         :
                         <section>
                             <span className="span_formTitle">Créez un compte gratuitement</span>
-                            <form ref={(form) => { this.form = form; }} >
+                            <form onSubmit={this.postRequest} ref={(form) => { this.formInput = form; }} >
                                 <article className={`formLogin ${indexVisible === 0 ? "current" : ""}`}>
                                     <div>
                                         <span>Email</span>
-                                        <input name="user_email" type="email" placeholder="Votre email" required onChange={this.handleChange} />
+                                        <input name="user_email" type="email" minLength="5" maxLength="64"
+                                            value={user_email}
+                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$"
+                                            title="Veuillez saisir votre email" placeholder="Votre email"
+                                            ref={(input) => { this.emailInput = input; }}
+                                            required onChange={this.handleChange} />
+                                        {!user_email_valid && <span className="errorMessage">Veuillez saisir un email valide</span>}
                                     </div>
                                     <div>
                                         <span>Mot de passe</span>
-                                        <input name="user_password" type="password" placeholder="Votre mot de passe" required onChange={this.handleChange} />
+                                        <input name="user_password" type="password" minLength="4" maxLength="64"
+                                            value={user_password}
+                                            title="Veuillez saisir un mot de passe d'au moins 4 caractères" placeholder="Votre mot de passe"
+                                            ref={(input) => { this.passwordInput = input; }}
+                                            required onChange={this.handleChange} />
+                                        {!user_password_valid && <span className="errorMessage">Veuillez saisir un mot de passe de plus de 4 caractères</span>}
                                     </div>
                                 </article>
                                 <article className={`formLogin ${indexVisible === 1 ? "current" : ""}`}>
@@ -117,11 +165,8 @@ export default class Login extends Component {
                                         </select>
                                     </div>
                                 </article>
+                                {totalStep !== null && this.checkButtons()}
                             </form>
-                            {totalStep !== null && this.checkButtons()}
-                            {
-                                /*wellSubscribe && <HBpopup msg='Félicitation vous êtes maintenant inscrit' /> && setTimeout(() => this.props.history.push('/'), 3000)*/
-                            }
                         </section>
                 }
             </div>
@@ -134,7 +179,7 @@ export default class Login extends Component {
             return (
                 <div className="div_button">
                     <button onClick={this.loginPrev} type="button">Précédent</button>
-                    <button onClick={this.postRequest} type="button">Terminer</button>
+                    <button type="submit">Terminer</button>
                 </div>
             )
         }
@@ -151,7 +196,7 @@ export default class Login extends Component {
             //On affiche le bouton suivant
             return (
                 <div className="div_button">
-                    <button onClick={(evt) => { this.loginNext() }} type="button">Suivant</button>
+                    <button onClick={this.loginNext} type="button">Suivant</button>
                 </div>
             )
         }

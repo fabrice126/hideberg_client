@@ -1,125 +1,138 @@
-#root,main{
+#root,
+main {
   height: 100%;
 }
-.div-home-HBlogin{
+
+.div-home-HBlogin {
   background: url("/images/background.jpg") 100% 100%;
   background-size: cover;
   height: 100%;
 }
+
+.div-home-HBlogin form {
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.div-home-HBlogin section {
+  /* box-shadow: 0px 2px 1px #ccc; */
+  width: 30%;
+  height: 500px;
+  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.div-home-HBlogin article {
+  position: relative;
+  top: -50px;
+  left: 0px;
+  opacity: 0;
+  display: none;
+  flex-direction: column;
+  animation: appear forwards 0.7s;
+}
+
+.div-home-HBlogin article.current {
+  display: flex;
+}
+
+.div-home-HBlogin article div:not(.div_genre) {
+  /*  */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.div-home-HBlogin .div_genre {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.div-home-HBlogin .div_genre label {
+  padding: 10px;
+}
+
+.div-home-HBlogin article div span {
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 0px;
+  /* font-weight: bold; */
+}
+
+.div-home-HBlogin span.span_formTitle {
+  color: #363f93;
+  margin-top: 60px;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.div-home-HBlogin article select,
+article input:focus {
+  border-bottom: 2px solid #363f93;
+}
+
+.div-home-HBlogin article select,
+article input {
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid transparent;
+  color: #fff;
+  font-size: 18px;
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.div-home-HBlogin div.div_button {
+  align-self: center;
+}
+
 .div-home-HBlogin input::placeholder {
   color: #EEE;
-} 
-.div-home-HBlogin section{
-    /* box-shadow: 0px 2px 1px #ccc; */
-    
-    width: 30%;
-    height:500px;
-    padding: 20px;
-    margin:0 auto;
-    
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    align-items:stretch;
-  }
-  
-  
-  .div-home-HBlogin article{
-    position:relative;
-    top:-50px;
-    left:0px;
-    opacity:0;
-  
-    display:none;
-    flex-direction:column;
-    
-    animation:appear forwards 0.7s;
-  }
-  .div-home-HBlogin article.current{
-    display:flex;
-  }
-  
-  .div-home-HBlogin article div:not(.div_genre){
-    /*  */
-    
-    display:flex;
-    flex-direction:column;
-    
-    margin-bottom: 10px;
-  }
-  .div-home-HBlogin .div_genre{
-    display:flex;
-    flex-direction:row;
-    justify-content:flex-start;
-    align-items:center;
-  }
-  .div-home-HBlogin .div_genre label{
-    padding:10px;
-  }
-  .div-home-HBlogin article div span{
-    color:#fff;
-    
-    font-size:12px;
-    padding: 5px 0px;
+}
 
-    /* font-weight: bold; */
-  }
-  .div-home-HBlogin span.span_formTitle{
-    color:#363f93;
-    
-    margin-top: 60px;
-    font-size: 32px;
+/* .div-home-HBlogin button:disabled {
+  background: #cccccc;
+  color: #666666;
+} */
+.div-home-HBlogin .errorMessage{
+  color: #ec3535;
+}
+.div-home-HBlogin button:hover:enabled {
+  background: #ddd;
+  color: #363f93;
+}
 
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .div-home-HBlogin article select, article input:focus{
-    border-bottom:2px solid #363f93;
-  }
-  .div-home-HBlogin article select, article input{
-    background:rgba(0, 0, 0, 0.3);
-    border-bottom:2px solid transparent;
-    color:#fff;
-    
-    font-size:18px;
-    padding:15px;
-    transition: 0.3s;
-  }
+.div-home-HBlogin button {
+  background: #363f93;
+  color: #fff;
+  font-size: 16px;
+  padding: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
 
-  .div-home-HBlogin div.div_button{
-    align-self: center;
+.div-home-HBlogin button.hidden {
+  display: none;
+}
+
+@keyframes appear {
+  0% {
+    top: -50px;
+    opacity: 0;
   }
-  
-  .div-home-HBlogin button:hover{
-    background:#ddd;
-    color:#363f93;
+  30% {
+    top: 0px;
+    left: 0px;
   }
-  .div-home-HBlogin button{
-    background:#363f93;
-    color:#fff;
-    
-    font-size:16px;
-    padding:20px;
-    
-    cursor:pointer;
-    text-transform:uppercase;
+  100% {
+    top: 0px;
+    opacity: 1;
   }
-  .div-home-HBlogin button.hidden{
-    display: none;
-  }
-  
-  @keyframes appear{
-    0%{
-      top:-50px;
-      opacity:0;
-    }
-    30%{
-      top:0px;
-      left:0px;
-    }
-    100%{
-      top:0px;
-      opacity:1;
-    }
-  }
+}
