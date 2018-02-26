@@ -10,7 +10,8 @@
 .div-home-HBwebsites article{
 }
 .div-home-HBwebsites article#home{
-  min-height: 580px;
+  /* min-height: 580px; */
+  /* height: 400px; */
 }
 .div-home-HBwebsites .ul_content{
   display:none;
@@ -93,7 +94,7 @@ div.annonce{
   color:#363f93;
 
   padding:10px;
-  font-size: 14px;
+  font-size: 20px;
 
   text-decoration:none;
   cursor: pointer;

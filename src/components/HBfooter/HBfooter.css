@@ -4,10 +4,9 @@
 footer {
     background: #fff;
 
-    position:sticky;
+    position: absolute;
     bottom:0;
     width:100%;
-    padding: 20px;
     /* height:160px; */
  
     display: flex;
@@ -29,15 +28,6 @@ footer {
    text-align:center;
    text-decoration: none;
  }
- footer span#sp_copyright{
-   position: absolute;
-   left: 10px;
-   bottom:20px;
-   color: #aaa;
- 
-   font-size: 12px;
-   padding: 10px;
- }
  footer nav{
    display: flex;
    flex-direction: row;
@@ -51,11 +41,18 @@ footer {
    color: #555;
  }
  footer nav a{
-   color: #aaa;
- 
-   padding: 10px;
-   font-size: 12px;
- 
    text-align: center;
    text-decoration: none;
+ }
+ footer span#sp_copyright{
+   position: absolute;
+   left: 10px;
+   bottom:0px;
+ } 
+ footer nav a,
+ footer span#sp_copyright{
+  color: #aaa;
+ 
+  padding: 10px;
+  font-size: 12px;
  }

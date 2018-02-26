@@ -16,6 +16,8 @@
 
 .div-home-HBmap div.div_map{
     position: relative;
+    width:90%;
+    margin:0 auto;
 }
 .classContinent{
     width: 100% !important;

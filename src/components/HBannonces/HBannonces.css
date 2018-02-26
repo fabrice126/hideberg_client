@@ -8,8 +8,8 @@
 .div-home-HBannonces article{
 }
 .div-home-HBannonces article#home{
-  max-height: 300px;
-  min-height: 300px;
+  max-height: 200px;
+  min-height: 200px;
 }
 .div-home-HBannonces .ul_content{
   display:none;
@@ -45,14 +45,15 @@
   /* border: 1px solid #ccc;
   border-radius: 100%; */
   /* width: 80px; */
-  height:80px;
+  height:100px;
 }
 .div-home-HBannonces .ul_content li img{
   align-self: center;
-  margin: 15px 0px;
+  margin: 5px 0px;
 }
-.div-home-HBannonces .ul_content li img.img_logo{
+.div-home-HBannonces .img_logo{
   width: 80px;
+  margin: 0 auto;
 }
 .div-home-HBannonces .ul_content li span{
   padding: 10px;

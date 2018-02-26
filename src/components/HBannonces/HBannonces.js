@@ -67,7 +67,6 @@ class HBannonces extends Component {
             if (i >= (pageNum * this.state.nbContentTotalPerPage) && i < nbContentVisibleMax) {
                 tabLi.push(
                     <li key={"li_" + i}>
-                        <img src="/images/hidebergoffer.png" className="img_logo" alt="hidebergoffer" />
                         {/* <Link to={} target="_blank" key={"a_" + i}> */}
                             <img src={`/images/website/${data[i].website_label}.png`} alt={data[i].website_label} className="img_job" />
                         {/* </Link> */}
@@ -110,6 +109,7 @@ class HBannonces extends Component {
         }
         return (
             <div className={"div-home-HBannonces " + classAnnonce} ref="myhome">
+            <img src="/images/hidebergoffer.svg" className="img_logo" alt="hidebergoffer" />
                 <article id='home'>{_listContent}</article>
                 <nav id='pagination'>{_listPagination}</nav>
             </div>

@@ -27,18 +27,18 @@ export default class Home extends Component {
         return (
             <div className="Home">
                 <section>
-                    <aside className="home-aside aside-country">
-                        <span className="sp_select">3. Sélectionner votre domaine.</span>
-                        <HBmapcountry key={"blockcountry"} elements={elementsCountry} />
-                        {/* <HBwebsites key={"pg_1"} elements={elementsAnnonce} nbElementsPerPage='1' duration="4" /> */} 
-                        <HBannonces key={"pg_1"} elements={elementsAnnonce} sector="design" nbElementsPerPage='1' duration="4" />
+
+                    <aside className="home-aside aside-blog">
+                        {/* <HBinfosblog key={"blocklinks"} name="blog info" /> */}
                     </aside>
                     <article className="home-article">
                         <HBtabs elements={elementsSectorTabs} contents={elementsSectorContents} />
                     </article>
-
-                    <aside className="home-aside aside-blog">
-                        <HBinfosblog key={"blocklinks"} name="blog info" />
+                    <aside className="home-aside aside-country">
+                        <span className="sp_select">3. Sélectionner votre domaine.</span>
+                        <HBmapcountry key={"blockcountry"} elements={elementsCountry} />
+                        {/* <HBwebsites key={"pg_1"} elements={elementsAnnonce} nbElementsPerPage='1' duration="4" /> */}
+                        <HBannonces key={"pg_1"} elements={elementsAnnonce} sector="design" nbElementsPerPage='1' duration="4" />
                     </aside>
                 </section>
                 <HBcomeback _to="/continent/europe" />
