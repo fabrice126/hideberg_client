@@ -16,7 +16,7 @@ class HBheader extends Component {
             <div className="div-home-HBheader">
                 <header>
                     <Link to='/'>
-                        <img id="img_logo" src="/images/_logo.png" alt="logo" />
+                        <img id="img_logo" src="/images/_logo.svg" alt="logo" />
                     </Link>
                     <Link to='/login'>
                         <img id="img_login" src="/images/icons/login.png" alt="login" />
