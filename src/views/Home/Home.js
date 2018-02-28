@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../index.css';
 import './Home.css';
 import HBwebsites from '../../components/HBwebsites/HBwebsites';
-import HBinfosblog from '../../components/HBinfosblog/HBinfosblog';
+// import HBinfosblog from '../../components/HBinfosblog/HBinfosblog';
 import HBmapcountry from '../../components/HBmapcountry/HBmapcountry';
 import HBtabs from '../../components/HBtabs/HBtabs';
 import HBcomeback from '../../components/HBcomeback/HBcomeback';
