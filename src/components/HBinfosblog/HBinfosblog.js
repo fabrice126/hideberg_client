@@ -15,7 +15,6 @@ class HBinfosblog extends Component {
 
 
     componentDidMount() {
-        console.log(process.env.REACT_APP_API_HOST);
         let _url = `${process.env.REACT_APP_API_HOST}/api/continent/europe/country/france/infos`;
         fetch(_url)
             .then(response => response.json())

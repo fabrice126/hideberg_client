@@ -16,18 +16,22 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <main>
-          <HBheader />
+          <div className="content">
+          <div className="divHeader">
+            <HBheader />
+          </div>
+            <Switch>
+              <Route exact path='/' component={Continent} />
+              <Route exact path='/continent/:continent' component={Continent} />
+              <Route exact path='/country/:country/sector/:sector' component={Home} />
 
-          <Switch>
-
-            <Route exact path='/' component={Continent} />
-            <Route exact path='/continent/:continent' component={Continent} />
-            <Route exact path='/country/:country/sector/:sector' component={Home} />
-
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/*' component={Page404} />
-          </Switch>
-          <HBfooter />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/*' component={Page404} />
+            </Switch>
+          </div>
+          <div className="divFooter">
+            <HBfooter  />
+          </div>
         </main>
       </BrowserRouter>
     );

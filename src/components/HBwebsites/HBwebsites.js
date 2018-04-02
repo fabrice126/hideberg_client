@@ -18,7 +18,8 @@ class HBwebsites extends Component {
     }
     componentDidMount() {
         if (this.props.duration) this.doAnimation();
-        fetch(`${process.env.REACT_APP_API_HOST}/api/continent/europe/country/france/sector/${this.props.sector}/websites`)
+        let _url=`${process.env.REACT_APP_API_HOST}/api/continent/europe/country/${this.props.country}/sector/${this.props.sector}/websites`;
+        fetch(_url)
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -67,7 +68,7 @@ class HBwebsites extends Component {
             if (i >= (pageNum * this.state.nbContentTotalPerPage) && i < nbContentVisibleMax) {
                 tabLi.push(
                     <li key={"li_" + i}>
-                        <Link to={data[i].link_url} target="_blank" key={"a_" + i}>
+                        <Link to={data[i].link_label} target="_blank" key={"a_" + i}>
                             <img src={`/images/website/${data[i].website_label}.png`} alt={data[i].website_label} />
                         </Link>
                     </li>

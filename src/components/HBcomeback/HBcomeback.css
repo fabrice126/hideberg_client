@@ -1,22 +1,19 @@
-.div-home-HBcomeback #link_back:hover{
+.div-home-HBcomeback a:hover{
   background: #fff;
   color: #363f93;
  }
-.div-home-HBcomeback #link_back{
-   /* display: none; */
-   background: #363f93;
-   border:2px solid #363f93;
-   color: #eee;
- 
-   border-radius: 4px;
-   font-size: 12px;
-   padding: 10px;
- 
-   position: absolute;
-   bottom: 40px;
-   left: 20px;
-   transition: 0.2s;
+.div-home-HBcomeback a{
+  /* display: none; */
+  background: #363f93;
+  border:2px solid #363f93;
+  color: #eee;
+  
+  border-radius: 4px;
+  transition: 0.2s;
+  font-size: 12px;
+  padding: 10px;
 
-   text-decoration: none;
-   text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
  }

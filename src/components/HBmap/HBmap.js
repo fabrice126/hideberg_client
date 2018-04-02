@@ -8,7 +8,7 @@ class HBmap extends Component {
     constructor(props) {
         super(props);
 
-        this.availableCountries = ['france'];
+        this.availableCountries = ['belgium','france','germany','italy','spain','swissland','uk'];
         this.availableContinents = ['europe'];
 
         const { continent } = this.props;
@@ -72,7 +72,7 @@ class HBmap extends Component {
                 width: (_data[c].width * (_imgwidth)) + "%",
                 height: (_data[c].height * (_imgwidth)) * _minRatio + "%"
             }
-            _to = continent ? { pathname: `/country/${c}/sector/design` } : { pathname: `/continent/${c}` };
+            _to = continent ? { pathname: `/country/${c}/sector/design`, country:c } : { pathname: `/continent/${c}` };
 
             if (continent) {
                 if (this.availableCountries.indexOf(c) === -1) _to = "#";

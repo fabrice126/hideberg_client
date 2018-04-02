@@ -75,7 +75,6 @@ export default class Login extends Component {
             })
             .catch((err) => {
                 //Afficher un toast indiquant l'erreur
-                console.log("DANS ERROR");
                 console.error(err);
             });
         e.preventDefault()
