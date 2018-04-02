@@ -21,6 +21,10 @@
   
 .content{
     min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    flex:1;
 }
 .divFooter{
     margin-top:-40px;

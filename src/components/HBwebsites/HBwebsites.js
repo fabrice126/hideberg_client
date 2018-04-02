@@ -68,7 +68,7 @@ class HBwebsites extends Component {
             if (i >= (pageNum * this.state.nbContentTotalPerPage) && i < nbContentVisibleMax) {
                 tabLi.push(
                     <li key={"li_" + i}>
-                        <Link to={data[i].link_label} target="_blank" key={"a_" + i}>
+                        <Link to={data[i].link_url} target="_blank" key={"a_" + i}>
                             <img src={`/images/website/${data[i].website_label}.png`} alt={data[i].website_label} />
                         </Link>
                     </li>

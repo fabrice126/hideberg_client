@@ -26,7 +26,13 @@ export default class Login extends Component {
             user_search_sector: this.tSectors[0],
             user_destination: this.tDestinations[0],
         }
+
+        document.addEventListener("keydown", (event) => {
+            console.log(event.which);
+            if (event.which === 13) this.loginNext();
+        });
     }
+    
     loginPrev = () => {
         let { indexVisible } = this.state;
         if (indexVisible !== 0) this.setState({ indexVisible: --indexVisible })

@@ -6,7 +6,11 @@ main {
 .div-home-HBlogin {
   background: url("/images/background.jpg") 100% 100%;
   background-size: cover;
-  height: 88%;
+  /* height: 88%; */
+
+  min-height: 100%;
+  flex: 1;
+  height: 100%;
 }
 
 .div-home-HBlogin form {

@@ -1,11 +1,14 @@
 .Home {
+  min-height: 100%;
+  flex:1;
+  
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: flex-start;
+
+  flex-wrap: wrap;
   align-items: stretch;
 }
-
 .Home header {
   flex: 1;
 }
@@ -16,6 +19,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: stretch;
+  flex:1;
 }
 
 .Home aside.home-aside {
