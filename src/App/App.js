@@ -6,6 +6,8 @@ import Home from '../views/Home/Home';
 import Login from '../views/Login/Login';
 import Continent from '../views/Continent/Continent';
 import Page404 from '../views/Page404/Page404';
+import Blog from '../views/Blog/Blog';
+import Blogcontent from '../views/Blogcontent/Blogcontent';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HBheader from '../components/HBheader/HBheader';
@@ -26,6 +28,8 @@ export default class App extends Component {
               <Route exact path='/country/:country/sector/:sector' component={Home} />
 
               <Route exact path='/login' component={Login} />
+              <Route exact path='/blog' component={Blog} />
+              <Route exact path='/blog/:continent/:country' component={Blogcontent} />
               <Route exact path='/*' component={Page404} />
             </Switch>
           </div>

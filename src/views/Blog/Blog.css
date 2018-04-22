@@ -1,0 +1,77 @@
+#root,
+main {
+  height: 100%;
+}
+
+.div-home-HBblog {
+  background: #eee;
+}
+
+.div-home-HBblog header{
+  background-image: url("./img/cover_continents/europe.png");
+  background-size: cover;
+
+  margin: 0px;
+
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+}
+.div-home-HBblog header span{
+  color: #fff;
+  font-size: 50px;
+  padding: 50px;
+}
+.ul_countries{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: stretch;
+}
+.ul_countries li:hover{
+  background-position: bottom;
+}
+.ul_countries li{
+  background-color: #363e93;
+  background-size: cover;
+  background-position:  center;
+
+  width:33.33%;
+  font-size: 50px;
+
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.4s;
+  
+}
+.ul_countries li a{
+  color: #fff;
+  text-shadow: 0px 1px 0px #111;
+  text-decoration: none;
+}
+.ul_countries li span{
+
+  padding: 80px 0px;
+}
+li.li_allemagne{ background-image: url("./img/cover_continents/allemagne.jpg");}
+li.li_royaume-uni{ background-image: url("./img/cover_continents/royaume-uni.jpg");}
+li.li_france{ background-image: url("./img/cover_continents/france.jpg");}
+li.li_suisse{ background-image: url("./img/cover_continents/suisse.jpg");}
+li.li_irlande{ background-image: url("./img/cover_continents/irlande.jpg");}
+li.li_grece{ background-image: url("./img/cover_continents/grece.jpg");}
+li.li_espagne{ background-image: url("./img/cover_continents/espagne.jpg");}
+li.li_italie{ background-image: url("./img/cover_continents/italie.jpg");}
+li.li_pays-bas{ background-image: url("./img/cover_continents/pays-bas.jpg");}
