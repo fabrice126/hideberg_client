@@ -12,29 +12,33 @@ import Blogcontent from '../views/Blogcontent/Blogcontent';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HBheader from '../components/HBheader/HBheader';
 import HBfooter from '../components/HBfooter/HBfooter';
+import withTracker from './HBTracker';
+
 
 export default class App extends Component {
+
   render() {
     return (
       <BrowserRouter>
         <main>
           <div className="content">
-          <div className="divHeader">
-            <HBheader />
-          </div>
+            <div className="divHeader">
+              <HBheader />
+            </div>
             <Switch>
-              <Route exact path='/' component={Continent} />
-              <Route exact path='/continent/:continent' component={Continent} />
-              <Route exact path='/country/:country/sector/:sector' component={Home} />
+              <Route exact path='/' component={withTracker(Continent)} />
+              <Route exact path='/continent/:continent' component={withTracker(Continent)} />
+              <Route exact path='/country/:country/sector/:sector' component={withTracker(Home)} />
 
-              <Route exact path='/login' component={Login} />
               <Route exact path='/blog' component={Blog} />
               <Route exact path='/blog/:continent/:country' component={Blogcontent} />
-              <Route exact path='/*' component={Page404} />
+=======
+              <Route exact path='/login' component={withTracker(Login)} />
+              <Route exact path='/*' component={withTracker(Page404)} />
             </Switch>
           </div>
           <div className="divFooter">
-            <HBfooter  />
+            <HBfooter />
           </div>
         </main>
       </BrowserRouter>
