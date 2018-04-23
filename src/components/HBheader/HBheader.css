@@ -17,3 +17,48 @@ header img#img_logo{
 header img#img_login{
   width: 50px;
 }
+
+header a{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+
+  /* width: 100px; */
+}
+.div_icons_header span{
+  color: #363e93;
+
+  font-size: 20px;
+  padding-left: 10px;
+}
+.div_icons_header .material-icons,
+.div_icons_header [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+.div_icons_header [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+  color: #363e93;
+
+  margin: 0px;
+  padding: 0px;
+}
+.div_icons_header [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+.div_icons_header [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+  font-size: 30px;
+}
+.div_icons_header .material-icons{
+  /* font-size: 44px; */
+}
+
+.div_icons_header{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.div_icons_header a{
+  margin:0px 10px;
+}

@@ -15,12 +15,14 @@ class HBheader extends Component {
         return (
             <div className="div-home-HBheader">
                 <header>
-                    <Link to='/'>
-                        <img id="img_logo" src="/images/_logo.svg" alt="logo" />
-                    </Link>
-                    <Link to='/login'>
-                        <img id="img_login" src="/images/icons/login.png" alt="login" />
-                    </Link>
+                    <Link to='/'><img id="img_logo" src="/images/_logo.svg" alt="logo" /></Link>
+                    <div className='div_icons_header'>
+                        <Link to='/' title="Recherche"><i className="flaticon-geography"></i></Link>
+                        <Link to='/blog' title="Blog"><i className="flaticon-paper"></i></Link>
+                        {/* <Link to='/' title="Favoris"><i className="material-icons">favorite</i></Link> */}
+                        <Link to='/login' title="Connexion"><i className="flaticon-profile"></i> <span>LOGIN</span></Link>
+                        {/* <img id="img_login" src="/images/icons/login.png" alt="login" /> */}
+                    </div>
                 </header>
             </div>
         )
